@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Design tokens. Values are space-separated RGB channels so Tailwind's
+ * opacity modifiers work (e.g. bg-brand/10). Light is the default; the
+ * `dark` class on <html> swaps every token.
+ */
+@layer base {
+  :root {
+    --canvas: 253 250 231;      /* cream */
+    --canvas-2: 246 241 214;
+    --surface: 255 255 255;
+    --surface-2: 250 247 232;
+    --fg: 12 13 30;             /* ink */
+    --fg-muted: 84 86 108;
+    --fg-subtle: 126 128 148;
+    --brand: 30 43 250;         /* cobalt: text, icons, accents */
+    --brand-solid: 30 43 250;   /* filled buttons */
+    --brand-hi: 110 120 255;    /* gradient partner */
+    --on-brand: 255 255 255;
+    --line: 30 43 250;
+    --shadow: 20 24 90;
+    --ok: 21 128 61;
+    --warn: 180 83 9;
+    --risk: 200 30 30;
+    --neutral: 82 90 105;
+    color-scheme: light;
+  }
+
+  .dark {
+    --canvas: 5 6 20;
+    --canvas-2: 9 11 30;
+    --surface: 14 16 40;
+    --surface-2: 20 23 54;
+    --fg: 240 238 226;
+    --fg-muted: 163 166 194;
+    --fg-subtle: 112 115 146;
+    --brand: 128 140 255;
+    --brand-solid: 61 75 255;
+    --brand-hi: 150 120 255;
+    --on-brand: 255 255 255;
+    --line: 140 150 255;
+    --shadow: 0 0 0;
+    --ok: 74 222 128;
+    --warn: 251 191 36;
+    --risk: 248 113 113;
+    --neutral: 156 163 175;
+    color-scheme: dark;
+  }
+
+  html {
+    background-color: rgb(var(--canvas));
+    color: rgb(var(--fg));
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: rgb(var(--canvas));
+    color: rgb(var(--fg));
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: "Inter Tight", Inter, ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.035em;
+  }
+
+  ::selection {
+    background: rgb(var(--brand-solid));
+    color: rgb(var(--on-brand));
+  }
+
+  *:focus-visible {
+    outline: 2px solid rgb(var(--brand));
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+@layer utilities {
+  .px-fluid {
+    padding-left: clamp(20px, 5vw, 96px);
+    padding-right: clamp(20px, 5vw, 96px);
+  }
+
+  .type-headline {
+    font-size: clamp(38px, 5.4vw, 92px);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+  }
+
+  .type-lede {
+    font-size: clamp(17px, 1.35vw, 21px);
+    line-height: 1.6;
+  }
+
+  /* Cobalt-to-violet gradient text. */
+  .gradient-text {
+    background-image: linear-gradient(100deg, rgb(var(--brand)) 10%, rgb(var(--brand-hi)) 60%, rgb(var(--brand)) 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Faint engineering grid, used behind hero and sections. */
+  .bg-grid {
+    background-image:
+      linear-gradient(rgb(var(--line) / 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--line) / 0.07) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .mask-fade-y {
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+  }
+
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  }
+
+  .mask-radial {
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 72%);
+    mask-image: radial-gradient(ellipse at center, #000 30%, transparent 72%);
+  }
+
+  .glass {
+    background: rgb(var(--surface) / 0.66);
+    backdrop-filter: blur(16px) saturate(1.4);
+    -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+}
+
+/* Film grain overlay: adds texture so large flat areas never look plastic. */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 200;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.dark .grain::after {
+  opacity: 0.06;
+}
+
+/* Lenis smooth scrolling. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* Circular theme-switch reveal (View Transitions API). */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
