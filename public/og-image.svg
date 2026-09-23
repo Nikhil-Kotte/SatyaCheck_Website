@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&amp;family=Inter:wght@400;600&amp;display=swap');
+      .title { font-family: 'Space Grotesk', -apple-system, sans-serif; font-weight: 700; fill: #1E2BFA; }
+      .body { font-family: 'Inter', -apple-system, sans-serif; font-weight: 400; fill: #6B6B6B; }
+      .badge-text { font-family: 'Inter', -apple-system, sans-serif; font-weight: 600; fill: #1E2BFA; }
+      .brand { font-family: 'Space Grotesk', -apple-system, sans-serif; font-weight: 700; fill: #111111; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#FDFAE7" />
+
+  <!-- Subtle border -->
+  <rect x="24" y="24" width="1152" height="582" rx="28" fill="none" stroke="#1E2BFA" stroke-width="2" stroke-opacity="0.15" />
+
+  <!-- Brand corner -->
+  <g transform="translate(80, 80)">
+    <rect width="44" height="44" rx="12" fill="#1E2BFA" />
+    <path d="M13 22 L19 28 L31 15" fill="none" stroke="#FDFAE7" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="58" y="32" class="brand" font-size="30" letter-spacing="-0.5">SatyaCheck</text>
+  </g>
+
+  <!-- Eyebrow Badge -->
+  <g transform="translate(80, 180)">
+    <rect width="320" height="38" rx="19" fill="#1E2BFA" fill-opacity="0.08" stroke="#1E2BFA" stroke-opacity="0.2" />
+    <text x="24" y="24" class="badge-text" font-size="14" letter-spacing="1.5">VOICE-CLONE SCAM PROTECTION</text>
+  </g>
+
+  <!-- Headline -->
+  <text x="80" y="300" class="title" font-size="64" letter-spacing="-1.5">Is that really your son</text>
+  <text x="80" y="375" class="title" font-size="64" letter-spacing="-1.5">on the phone?</text>
+
+  <!-- Subtitle -->
+  <text x="80" y="445" class="body" font-size="24">SatyaCheck checks the voice, the speech and what the caller is asking for,</text>
+  <text x="80" y="482" class="body" font-size="24">then tells your parents whether to trust the call, with the reason on screen.</text>
+
+  <!-- Footer trust line -->
+  <g transform="translate(80, 545)">
+    <circle cx="6" cy="6" r="4" fill="#1E2BFA" />
+    <text x="22" y="11" class="body" font-size="16" fill="#111111">Selected for Eureka! 2026 zonal round, E-Cell IIT Bombay • Built in Hyderabad</text>
+  </g>
+</svg>

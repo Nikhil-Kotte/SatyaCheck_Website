@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <!-- Primary Meta Tags -->
+    <title>SatyaCheck: Know if the voice on the phone is real</title>
+    <meta name="title" content="SatyaCheck: Know if the voice on the phone is real" />
+    <meta name="description" content="Voice-clone scams target families. SatyaCheck checks the voice, the speech and the script, and warns you during the call." />
+    <meta name="theme-color" content="#FDFAE7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#050614" media="(prefers-color-scheme: dark)" />
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://satyacheck.in/" />
+    <meta property="og:title" content="SatyaCheck: Know if the voice on the phone is real" />
+    <meta property="og:description" content="Voice-clone scams target families. SatyaCheck checks the voice, the speech and the script, and warns you during the call." />
+    <meta property="og:image" content="https://satyacheck.in/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_IN" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://satyacheck.in/" />
+    <meta property="twitter:title" content="SatyaCheck: Know if the voice on the phone is real" />
+    <meta property="twitter:description" content="Voice-clone scams target families. SatyaCheck checks the voice, the speech and the script, and warns you during the call." />
+    <meta property="twitter:image" content="https://satyacheck.in/og-image.png" />
+
+    <!-- Google Fonts Preconnect and Non-blocking Stylesheet -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    </noscript>
+
+    <!-- Privacy-friendly analytics placeholder (disabled by default, managed via src/content.ts) -->
+    <!--
+    <script defer data-domain="satyacheck.in" src="https://plausible.io/js/script.js"></script>
+    -->
+    <!-- Apply the saved or system theme before first paint, so there is no flash. -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("sc-theme");
+          var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+          if (dark) document.documentElement.classList.add("dark");
+          if (saved) {
+            document.querySelectorAll('meta[name="theme-color"]').forEach(function (m) {
+              m.setAttribute("content", dark ? "#050614" : "#FDFAE7");
+            });
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body class="grain min-h-screen font-sans antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
