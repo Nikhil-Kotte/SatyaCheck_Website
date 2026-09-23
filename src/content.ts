@@ -412,7 +412,7 @@ export const CONTENT: SiteContent = {
           "Your name",
           "Your email address or 10-digit Indian phone number",
           "Your city (optional)",
-          "Your role or perspective (parent, adult child, bank or organisation, or other)",
+          "Your role or perspective (parent, son or daughter, bank or organisation, or other)",
           "Your optional personal story or message",
           "For bank and telco pilot inquiries: your organisation name and job role",
         ],

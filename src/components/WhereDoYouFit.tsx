@@ -64,7 +64,8 @@ export const WhereDoYouFit: React.FC = () => {
               { value: 'banks', label: 'Banks and telcos' },
               { value: 'partners', label: 'Cyber cells and NGOs' },
             ]}
-            className="p-1.5 text-[15px] [&_button]:px-5 [&_button]:py-2.5"
+            mobileColumns={3}
+            className="sm:p-1.5 sm:[&_button]:px-5 sm:[&_button]:py-2.5 sm:[&_button]:text-[15px]"
           />
         </div>
       </SectionHeading>

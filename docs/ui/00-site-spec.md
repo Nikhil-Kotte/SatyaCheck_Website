@@ -96,7 +96,7 @@ Logo text "SatyaCheck". Links: How it works, For banks, Privacy, FAQ. Button: Jo
 ## 12. Waitlist (id="waitlist")
 - Headline: Protect the people who pick up the phone
 - Body: Join the waitlist for early access, or tell us about a parent who almost got scammed. Every story helps us build this right.
-- Fields: name (required); phone or email (required; valid email or 10-digit Indian mobile); city (optional); I am a: parent, adult child, bank or organisation, other (required); your story (optional).
+- Fields: name (required); phone or email (required; valid email or 10-digit Indian mobile); city (optional); I am a: parent, son or daughter (a grown-up child protecting their parents), bank or organisation, other (required); your story (optional).
 - Consent checkbox (required): I agree to be contacted about SatyaCheck and have read the privacy policy.
 - Button: Join the waitlist. States: loading, success ("You're on the list. Thank you."), error with retry. Hidden honeypot field.
 

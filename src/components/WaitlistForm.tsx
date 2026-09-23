@@ -13,11 +13,12 @@ import { Reveal, WordReveal } from '@/components/ui/reveal';
 import { FORM_ENDPOINT } from '@/content';
 import { useLanguage } from '@/lib/use-language';
 
-type RoleOption = 'parent' | 'adult child' | 'bank or organisation' | 'other';
+// 'son or daughter': a grown-up child signing up to protect their parents.
+type RoleOption = 'parent' | 'son or daughter' | 'bank or organisation' | 'other';
 
 const ROLE_OPTIONS: { value: RoleOption; label: string }[] = [
   { value: 'parent', label: 'Parent' },
-  { value: 'adult child', label: 'Adult child' },
+  { value: 'son or daughter', label: 'Son or daughter' },
   { value: 'bank or organisation', label: 'Bank or organisation' },
   { value: 'other', label: 'Other' },
 ];
@@ -236,7 +237,8 @@ export const WaitlistForm: React.FC = () => {
                       options={ROLE_OPTIONS}
                       value={form.role}
                       onChange={(role) => setForm({ ...form, role })}
-                      className="w-full"
+                      mobileColumns={2}
+                      className="sm:w-full sm:justify-between"
                     />
                   </div>
 
