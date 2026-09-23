@@ -4,6 +4,7 @@
  *
  * HOW IT WORKS:
  * 1. Creates/uses two tabs in your Google Sheet: "Waitlist" and "Pilots"
+ *    (bank/telco pilot requests and cyber cell/NGO partner requests both go to "Pilots")
  * 2. Parses incoming POST requests (supports text/plain to avoid preflight CORS issues)
  * 3. Appends formatted submissions with server timestamps
  * 4. Returns JSON response
@@ -33,10 +34,11 @@ function doPost(e) {
     var type = data.type || 'waitlist';
     var serverTimestamp = new Date();
 
-    if (type === 'pilot') {
-      // Handle Bank & Telco Pilot Submission
+    if (type === 'pilot' || type === 'partner') {
+      // Bank/telco pilot or cyber cell/NGO partner request
       var pilotSheet = getOrCreateSheet(sheet, 'Pilots', [
         'Timestamp',
+        'Type',
         'Name',
         'Organisation',
         'Role',
@@ -46,6 +48,7 @@ function doPost(e) {
 
       pilotSheet.appendRow([
         serverTimestamp,
+        type,
         data.name || '',
         data.organisation || '',
         data.role || '',
@@ -53,7 +56,7 @@ function doPost(e) {
         data.timestamp || ''
       ]);
 
-      return createJsonResponse({ status: 'success', type: 'pilot', message: 'Pilot request saved' }, 200);
+      return createJsonResponse({ status: 'success', type: type, message: 'Request saved' }, 200);
 
     } else {
       // Default: Handle Waitlist Submission
