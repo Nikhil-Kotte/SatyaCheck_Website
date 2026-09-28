@@ -6,7 +6,7 @@ import { CONTENT, STORY_TEXT, STORY_VIDEO_URL } from '@/content';
 
 export const TheStory: React.FC = () => (
   <Section id="story" labelledBy="story-heading" className="pb-0 lg:pb-0">
-    <SectionHeading id="story-heading" index="08" eyebrow={CONTENT.theStory.eyebrow} title="Why we're *building this*" />
+    <SectionHeading id="story-heading" index="11" eyebrow={CONTENT.theStory.eyebrow} title="Why we're *building this*" />
 
     <div className="mx-auto grid max-w-[1400px] gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
       <Reveal>

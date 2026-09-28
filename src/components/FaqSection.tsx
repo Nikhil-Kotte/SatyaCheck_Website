@@ -16,7 +16,7 @@ export const FaqSection: React.FC = () => {
     <Section id="faq" labelledBy="faq-heading">
       <div className="mx-auto grid max-w-[1400px] gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
         <div className="lg:sticky lg:top-32 lg:self-start">
-          <SectionHeading id="faq-heading" index="09" eyebrow="FAQ" title="Questions, *answered*" className="mb-8 lg:mb-10" />
+          <SectionHeading id="faq-heading" index="12" eyebrow="FAQ" title="Questions, *answered*" className="mb-8 lg:mb-10" />
           <Reveal>
             <p className="max-w-sm text-fg-muted">Something we haven't covered? We read every message.</p>
             <Button href="#work-with-us" variant="secondary" arrow className="mt-6">

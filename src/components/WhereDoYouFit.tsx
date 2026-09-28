@@ -49,7 +49,7 @@ export const WhereDoYouFit: React.FC = () => {
       <span id="for-banks" className="absolute -top-24" aria-hidden="true" />
       <SectionHeading
         id="audience-heading"
-        index="05"
+        index="07"
         eyebrow="Where do you fit"
         title="Built for everyone *on the front line*"
         align="center"

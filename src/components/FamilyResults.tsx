@@ -39,7 +39,7 @@ export const FamilyResults: React.FC = () => {
     <Section id="family" labelledBy="family-heading" className="overflow-hidden">
       <SectionHeading
         id="family-heading"
-        index="04"
+        index="06"
         eyebrow="What your family sees"
         title="Clear answers, *not confusing scores*"
       />

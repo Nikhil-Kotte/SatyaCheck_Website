@@ -4,9 +4,9 @@ import { ArrowUpRight, Check } from 'lucide-react';
 import { Section, SectionHeading } from '@/components/ui/section';
 import { Reveal } from '@/components/ui/reveal';
 import { Button } from '@/components/ui/button';
-import { PulseDot } from '@/components/ui/bits';
+import { Counter, PulseDot } from '@/components/ui/bits';
 import { cn } from '@/lib/utils';
-import { CONTENT } from '@/content';
+import { CONTENT, VALIDATION } from '@/content';
 
 export const StatusTimeline: React.FC = () => {
   const { status } = CONTENT;
@@ -18,7 +18,7 @@ export const StatusTimeline: React.FC = () => {
 
   return (
     <Section id="timeline" labelledBy="status-heading">
-      <SectionHeading id="status-heading" index="06" eyebrow={status.eyebrow} title="Early, and *honest about it*" />
+      <SectionHeading id="status-heading" index="09" eyebrow={status.eyebrow} title="Early, and *honest about it*" />
 
       <div ref={ref} className="relative mx-auto max-w-[1400px]">
         {/* Track (desktop) */}
@@ -67,6 +67,8 @@ export const StatusTimeline: React.FC = () => {
           })}
         </ol>
 
+        <Validation />
+
         <Reveal className="mt-10 flex flex-col items-start justify-between gap-6 rounded-card border border-dashed border-line/25 p-6 sm:flex-row sm:items-center sm:p-8">
           <p className="font-display text-xl font-medium tracking-tight text-fg sm:text-2xl">{status.closingLine}</p>
           <Button href="#work-with-us" variant="secondary" arrow className="shrink-0">
@@ -77,3 +79,72 @@ export const StatusTimeline: React.FC = () => {
     </Section>
   );
 };
+
+/** What we have tested, including what failed, and what surveys say people want. */
+function Validation() {
+  const reduce = useReducedMotion();
+  return (
+    <div className="mt-16 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
+      {/* Tested honestly, limits included */}
+      <Reveal className="h-full">
+        <div className="h-full rounded-panel border border-white/10 bg-night p-6 text-white sm:p-10">
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-rose-300">Working system</p>
+          <h3 className="mt-3 font-display text-[clamp(24px,2.6vw,38px)] font-semibold leading-tight tracking-[-0.03em]">
+            Tested honestly, <span className="font-serif font-normal italic text-[#b9c1ff]">limits included</span>
+          </h3>
+
+          <div className="mt-8 space-y-4" role="list" aria-label="Similarity to the enrolled voiceprint">
+            {VALIDATION.similarity.map((b, i) => (
+              <div key={b.label} role="listitem">
+                <div className="flex justify-between text-sm">
+                  <span className="text-white/75">{b.label}</span>
+                  <span className="font-mono text-white">{b.value.toFixed(2)}</span>
+                </div>
+                <div className="mt-2 h-3 overflow-hidden rounded-full bg-white/10">
+                  <motion.div
+                    className={cn('h-full rounded-full', i === 1 ? 'bg-gradient-to-r from-rose-500 to-rose-300' : 'bg-gradient-to-r from-[#3d4bff] to-[#a58bff]')}
+                    initial={reduce ? false : { width: '0%' }}
+                    whileInView={{ width: `${b.value * 100}%` }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.1, delay: 0.15 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 border-l-2 border-rose-400 pl-4 text-[15px] leading-relaxed text-white/85">{VALIDATION.similarityTakeaway}</p>
+
+          <div className="mt-8 grid gap-3 sm:grid-cols-3">
+            {VALIDATION.tests.map((t) => (
+              <div key={t.value} className={cn('rounded-2xl border-t-2 bg-white/[0.04] p-4', t.tone === 'ok' ? 'border-emerald-400' : 'border-rose-400')}>
+                <p className={cn('font-display text-2xl font-bold tracking-tight', t.tone === 'ok' ? 'text-white' : 'text-rose-300')}>{t.value}</p>
+                <p className="mt-1 text-sm leading-snug text-white/65">{t.label}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 text-xs leading-relaxed text-white/45">{VALIDATION.similarityNote}</p>
+        </div>
+      </Reveal>
+
+      {/* What people told surveys */}
+      <div className="flex flex-col gap-4">
+        <Reveal>
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-fg-subtle">Do people want this?</p>
+        </Reveal>
+        {VALIDATION.surveys.map((sv, i) => (
+          <Reveal key={sv.label} delay={i * 0.08} className="flex-1">
+            <div className="flex h-full gap-5 rounded-card border-l-2 border-brand bg-surface/70 p-6">
+              <p className="shrink-0 font-display text-5xl font-semibold tracking-[-0.05em]">
+                <Counter to={sv.value} suffix="%" className="gradient-text" />
+              </p>
+              <div>
+                <p className="text-fg">{sv.label}</p>
+                <p className="mt-2 text-xs leading-relaxed text-fg-subtle">{sv.source}</p>
+              </div>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  );
+}

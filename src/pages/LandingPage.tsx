@@ -3,6 +3,8 @@ import { HeroSection } from '@/components/HeroSection';
 import { ScrollVideoStory } from '@/components/motion/scroll-video-story';
 import { StatementBand } from '@/components/StatementBand';
 import { UnderTheHood } from '@/components/UnderTheHood';
+import { UserFlow } from '@/components/UserFlow';
+import { HowWeDiffer } from '@/components/HowWeDiffer';
 import { DemoSection } from '@/components/DemoSection';
 import { FamilyResults } from '@/components/FamilyResults';
 import { WhereDoYouFit } from '@/components/WhereDoYouFit';
@@ -23,9 +25,11 @@ export const LandingPage: React.FC = () => (
     </div>
     <StatementBand />
     <UnderTheHood />
+    <UserFlow />
     <DemoSection />
     <FamilyResults />
     <WhereDoYouFit />
+    <HowWeDiffer />
     <StatusTimeline />
     <PrivacySummary />
     <TheStory />

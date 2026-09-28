@@ -23,7 +23,7 @@ export const PrivacySummary: React.FC = () => {
 
   return (
     <Section id="privacy" labelledBy="privacy-heading">
-      <SectionHeading id="privacy-heading" index="07" eyebrow="Privacy" title="Built to protect privacy, *not collect it*" />
+      <SectionHeading id="privacy-heading" index="10" eyebrow="Privacy" title="Built to protect privacy, *not collect it*" />
 
       <div className="mx-auto grid max-w-[1400px] gap-4 lg:grid-cols-3 lg:grid-rows-3">
         {/* Feature card: voice becomes numbers */}
