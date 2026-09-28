@@ -16,7 +16,7 @@ export const UserFlow: React.FC = () => {
 
   return (
     <Section id="flow" labelledBy="flow-heading">
-      <SectionHeading id="flow-heading" index="04" eyebrow="The core user flow" title="Set up once. *Protected on every call.*" />
+      <SectionHeading id="flow-heading" index="04" eyebrow="The core user flow" title="Set up once. *Protected on every call.*" lede="A family member enrols once. Your parent's calls route through SatyaCheck. The caller installs nothing, and it works on any phone." />
 
       <ol ref={ref} className="relative mx-auto grid max-w-[1400px] gap-10 md:grid-cols-4 md:gap-6">
         {/* Connecting line: horizontal on desktop, vertical on phones */}

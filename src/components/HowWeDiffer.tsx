@@ -1,6 +1,6 @@
 import React from 'react';
 import { Check } from 'lucide-react';
-import { Section, SectionHeading } from '@/components/ui/section';
+import { Aurora, Section, SectionHeading } from '@/components/ui/section';
 import { Reveal } from '@/components/ui/reveal';
 import { SpotlightCard } from '@/components/ui/tilt-card';
 import { COMPETITORS } from '@/content';
@@ -8,6 +8,7 @@ import { COMPETITORS } from '@/content';
 /** Side-by-side with the tools people already know, as publicly described. */
 export const HowWeDiffer: React.FC = () => (
   <Section id="compare" labelledBy="compare-heading">
+      <Aurora tone="brand" />
     <SectionHeading
       id="compare-heading"
       index="08"

@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
-import { Plus } from 'lucide-react';
-import { Section, SectionHeading } from '@/components/ui/section';
+import { BellOff, Fingerprint, Plus, Smartphone, Trash2, UserX, type LucideIcon } from 'lucide-react';
+import { Aurora, Section, SectionHeading } from '@/components/ui/section';
 import { Reveal } from '@/components/ui/reveal';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { CONTENT } from '@/content';
+
+// The facts families ask about most, each backed by the answers below.
+const GOOD_TO_KNOW: { icon: LucideIcon; text: string }[] = [
+  { icon: UserX, text: 'The caller installs nothing.' },
+  { icon: Smartphone, text: 'Works on any phone, through call forwarding.' },
+  { icon: BellOff, text: 'It warns. It never blocks a call.' },
+  { icon: Fingerprint, text: 'Voiceprints, never recordings.' },
+  { icon: Trash2, text: 'Delete your voiceprint anytime.' },
+];
 
 export const FaqSection: React.FC = () => {
   const [open, setOpen] = useState<number | null>(0);
@@ -14,14 +23,30 @@ export const FaqSection: React.FC = () => {
 
   return (
     <Section id="faq" labelledBy="faq-heading">
+      <Aurora tone="brand" />
       <div className="mx-auto grid max-w-[1400px] gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
         <div className="lg:sticky lg:top-32 lg:self-start">
-          <SectionHeading id="faq-heading" index="12" eyebrow="FAQ" title="Questions, *answered*" className="mb-8 lg:mb-10" />
+          <SectionHeading id="faq-heading" index="13" eyebrow="FAQ" title="Questions, *answered*" className="mb-8 lg:mb-10" />
           <Reveal>
-            <p className="max-w-sm text-fg-muted">Something we haven't covered? We read every message.</p>
-            <Button href="#work-with-us" variant="secondary" arrow className="mt-6">
-              Contact us
-            </Button>
+            <div className="liquid-glass rounded-panel p-6 sm:p-7">
+              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-brand">Good to know</p>
+              <ul className="mt-4 space-y-3.5">
+                {GOOD_TO_KNOW.map(({ icon: Icon, text }) => (
+                  <li key={text} className="flex items-start gap-3">
+                    <span className="grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-brand/10 text-brand">
+                      <Icon className="h-4 w-4" aria-hidden="true" />
+                    </span>
+                    <span className="pt-1 text-[15px] leading-snug text-fg">{text}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-line/10 pt-5">
+                <p className="text-sm text-fg-muted">Something else? We read every message.</p>
+                <Button href="#work-with-us" variant="secondary" size="sm" arrow className="h-11">
+                  Contact us
+                </Button>
+              </div>
+            </div>
           </Reveal>
         </div>
 

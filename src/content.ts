@@ -446,6 +446,18 @@ export const CONTENT: SiteContent = {
     headline: "Frequently asked questions",
     items: [
       {
+        question: "How does SatyaCheck hear the call?",
+        answer: "Your parent's calls pass through the SatyaCheck line using call forwarding. It works on any phone, and the caller installs nothing.",
+      },
+      {
+        question: "What happens when a call looks like a scam?",
+        answer: "Your parent sees a warning with its reason on screen, the real family member gets an alert, and reporting to the 1930 cyber-crime helpline takes one tap.",
+      },
+      {
+        question: "Will it flag my bank's automated calls?",
+        answer: "Not on their own. A synthetic voice only counts as risk when the conversation looks like a scam, so your bank's genuine AI assistant is not flagged.",
+      },
+      {
         question: "Does the caller need to install anything?",
         answer: "No. Only the person being protected opts in.",
       },
@@ -456,6 +468,11 @@ export const CONTENT: SiteContent = {
       {
         question: "Is it available now?",
         answer: "Not yet. Join the waitlist and we'll tell you when pilots open.",
+      },
+      {
+        // TODO(team): same claim as "free for waitlist families" in AUDIENCE_CONTENT; confirm before launch.
+        question: "What does it cost?",
+        answer: "Early access is free for waitlist families. Banks and telcos can start with a free 6 to 8 week pilot.",
       },
       {
         question: "Will it ever block a real call?",

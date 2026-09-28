@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { Fingerprint, CheckCircle2, ShieldCheck, FileText, type LucideIcon } from 'lucide-react';
-import { Section, SectionHeading } from '@/components/ui/section';
+import { Aurora, Section, SectionHeading } from '@/components/ui/section';
 import { Reveal } from '@/components/ui/reveal';
 import { SpotlightCard } from '@/components/ui/tilt-card';
 import { Button } from '@/components/ui/button';
@@ -23,7 +23,8 @@ export const PrivacySummary: React.FC = () => {
 
   return (
     <Section id="privacy" labelledBy="privacy-heading">
-      <SectionHeading id="privacy-heading" index="10" eyebrow="Privacy" title="Built to protect privacy, *not collect it*" />
+      <Aurora flip tone="ok" />
+      <SectionHeading id="privacy-heading" index="11" eyebrow="Privacy" title="Built to protect privacy, *not collect it*" lede="Consent first. Voiceprints, not recordings. Nothing kept from your calls. You stay in control of your family's voice." />
 
       <div className="mx-auto grid max-w-[1400px] gap-4 lg:grid-cols-3 lg:grid-rows-3">
         {/* Feature card: voice becomes numbers */}

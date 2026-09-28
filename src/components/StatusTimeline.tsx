@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
 import { ArrowUpRight, Check } from 'lucide-react';
-import { Section, SectionHeading } from '@/components/ui/section';
+import { Aurora, Section, SectionHeading } from '@/components/ui/section';
 import { Reveal } from '@/components/ui/reveal';
 import { Button } from '@/components/ui/button';
 import { Counter, PulseDot } from '@/components/ui/bits';
@@ -18,7 +18,8 @@ export const StatusTimeline: React.FC = () => {
 
   return (
     <Section id="timeline" labelledBy="status-heading">
-      <SectionHeading id="status-heading" index="09" eyebrow={status.eyebrow} title="Early, and *honest about it*" />
+      <Aurora flip tone="brand" />
+      <SectionHeading id="status-heading" index="09" eyebrow={status.eyebrow} title="Early, and *honest about it*" lede="A working prototype, real test results, and the limit we are still fixing. We would rather you hear it from us." />
 
       <div ref={ref} className="relative mx-auto max-w-[1400px]">
         {/* Track (desktop) */}

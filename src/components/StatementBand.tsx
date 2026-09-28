@@ -3,7 +3,7 @@ import { X } from 'lucide-react';
 import { ScrollWordReveal } from '@/components/motion/scroll-word-reveal';
 import { Counter } from '@/components/ui/bits';
 import { Reveal } from '@/components/ui/reveal';
-import { Eyebrow } from '@/components/ui/section';
+import { Aurora, Eyebrow } from '@/components/ui/section';
 import { SpotlightCard } from '@/components/ui/tilt-card';
 import { PROBLEM, WHY_NOW } from '@/content';
 
@@ -12,7 +12,8 @@ import { PROBLEM, WHY_NOW } from '@/content';
  * their sources, why today's fixes fall short, and why now.
  */
 export const StatementBand: React.FC = () => (
-  <section id="problem" className="relative w-full scroll-mt-24 px-fluid py-24 lg:py-36" aria-labelledby="problem-heading">
+  <section id="problem" className="relative isolate w-full scroll-mt-24 overflow-x-clip px-fluid py-20 lg:py-28" aria-labelledby="problem-heading">
+    <Aurora tone="risk" />
     <div className="mx-auto max-w-[1400px]">
       <Reveal y={12} className="flex justify-center">
         <Eyebrow index="02">The problem</Eyebrow>

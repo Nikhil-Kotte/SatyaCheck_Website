@@ -42,6 +42,7 @@ export const FamilyResults: React.FC = () => {
         index="06"
         eyebrow="What your family sees"
         title="Clear answers, *not confusing scores*"
+        lede="Every call gets one of four answers in plain words, while it is still ringing in your parent's ear. Tap each one to see it."
       />
 
       <div className="mx-auto grid max-w-[1400px] items-center gap-12 lg:grid-cols-2 lg:gap-16">

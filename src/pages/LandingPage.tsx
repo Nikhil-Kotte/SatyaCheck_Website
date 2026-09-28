@@ -10,8 +10,8 @@ import { FamilyResults } from '@/components/FamilyResults';
 import { WhereDoYouFit } from '@/components/WhereDoYouFit';
 import { StatusTimeline } from '@/components/StatusTimeline';
 import { PrivacySummary } from '@/components/PrivacySummary';
+import { VoiceprintJourney } from '@/components/VoiceprintJourney';
 import { TheStory } from '@/components/TheStory';
-import { TeamSection } from '@/components/TeamSection';
 import { FaqSection } from '@/components/FaqSection';
 import { WaitlistForm } from '@/components/WaitlistForm';
 import { WorkWithUs } from '@/components/WorkWithUs';
@@ -31,9 +31,9 @@ export const LandingPage: React.FC = () => (
     <WhereDoYouFit />
     <HowWeDiffer />
     <StatusTimeline />
+    <VoiceprintJourney />
     <PrivacySummary />
     <TheStory />
-    <TeamSection />
     <FaqSection />
     <WaitlistForm />
     <WorkWithUs />

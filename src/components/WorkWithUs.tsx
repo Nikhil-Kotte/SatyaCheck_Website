@@ -1,6 +1,7 @@
 import React from 'react';
 import { Mail, MessageCircle, Phone } from 'lucide-react';
-import { Reveal, WordReveal } from '@/components/ui/reveal';
+import { WordReveal } from '@/components/ui/reveal';
+import { ZoomOnScroll } from '@/components/ui/zoom-on-scroll';
 import { Button } from '@/components/ui/button';
 import { CONTENT, CONTACT_EMAIL, WHATSAPP_NUMBER, PHONE_NUMBER } from '@/content';
 
@@ -11,8 +12,8 @@ export const WorkWithUs: React.FC = () => {
 
   return (
     <section id="work-with-us" className="w-full scroll-mt-24 px-fluid pb-24 lg:pb-32" aria-labelledby="work-heading">
-      <Reveal>
-        <div className="relative isolate mx-auto max-w-[1400px] overflow-hidden rounded-panel bg-night px-6 py-20 text-center text-white sm:px-12 lg:py-28">
+      <ZoomOnScroll className="mx-auto max-w-[1400px]">
+        <div className="relative isolate overflow-hidden bg-night px-6 py-20 text-center text-white sm:px-12 lg:py-28">
           <div aria-hidden="true" className="absolute inset-0 -z-10">
             <div className="absolute left-1/2 top-full h-[700px] w-[1100px] -translate-x-1/2 -translate-y-1/2 rounded-[100%] bg-[#3d4bff]/50 blur-[120px]" />
             <div className="absolute left-1/2 top-full h-[380px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-[100%] bg-[#a58bff]/40 blur-[80px]" />
@@ -47,8 +48,8 @@ export const WorkWithUs: React.FC = () => {
                 href={`https://wa.me/${whatsapp}`}
                 external
                 size="lg"
-                variant="secondary"
-                className="border-white/20 bg-white/5 text-white hover:border-white/50 hover:bg-white/10 hover:text-white"
+                variant="ghost"
+                className="liquid-glass-night text-white hover:bg-transparent hover:text-white"
                 icon={<MessageCircle className="h-4 w-4" aria-hidden="true" />}
               >
                 Message on WhatsApp
@@ -58,8 +59,8 @@ export const WorkWithUs: React.FC = () => {
               <Button
                 href={`tel:${phone}`}
                 size="lg"
-                variant="secondary"
-                className="border-white/20 bg-white/5 text-white hover:border-white/50 hover:bg-white/10 hover:text-white"
+                variant="ghost"
+                className="liquid-glass-night text-white hover:bg-transparent hover:text-white"
                 icon={<Phone className="h-4 w-4" aria-hidden="true" />}
               >
                 Call
@@ -67,7 +68,7 @@ export const WorkWithUs: React.FC = () => {
             )}
           </div>
         </div>
-      </Reveal>
+      </ZoomOnScroll>
     </section>
   );
 };

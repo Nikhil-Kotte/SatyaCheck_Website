@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
-import { AudioWaveform, Languages, Radar, Sparkles } from 'lucide-react';
+import { AudioWaveform, BellOff, Languages, Radar, Smartphone, Sparkles, UserX } from 'lucide-react';
 import { RotatingWord } from '@/components/motion/rotating-word';
 import { VerdictCard } from '@/components/motion/verdict-card';
 import { Button } from '@/components/ui/button';
@@ -69,7 +69,7 @@ export const HeroSection: React.FC = () => {
                 onClick={(e) => {
                   if (scrollToHash('#waitlist')) e.preventDefault();
                 }}
-                className="glass group mb-8 inline-flex items-center gap-3 rounded-full border border-line/15 py-1.5 pl-3 pr-1.5 text-[13px] font-medium text-fg shadow-card transition-colors hover:border-brand/40"
+                className="liquid-glass group mb-8 inline-flex items-center gap-3 rounded-full py-1.5 pl-3 pr-1.5 text-[13px] font-medium text-fg shadow-card transition-colors hover:border-brand/40"
               >
                 <PulseDot />
                 <span>{hero.statusBadge}</span>
@@ -120,7 +120,21 @@ export const HeroSection: React.FC = () => {
               </Button>
             </motion.div>
 
-            <motion.div {...enter(0.52)} className="mt-12 flex max-w-xl items-start gap-3 border-t border-line/15 pt-6">
+            {/* The three things families ask first */}
+            <motion.ul {...enter(0.48)} className="mt-8 flex flex-wrap gap-2" aria-label="Key facts">
+              {[
+                { icon: UserX, text: 'Caller installs nothing' },
+                { icon: Smartphone, text: 'Works on any phone' },
+                { icon: BellOff, text: 'Warns, never blocks' },
+              ].map(({ icon: Icon, text }) => (
+                <li key={text} className="liquid-glass inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-[13px] font-medium text-fg">
+                  <Icon className="h-4 w-4 text-brand" aria-hidden="true" />
+                  {text}
+                </li>
+              ))}
+            </motion.ul>
+
+            <motion.div {...enter(0.56)} className="mt-8 flex max-w-xl items-start gap-3 border-t border-line/15 pt-6">
               <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-brand" aria-hidden="true" />
               <p className="text-sm leading-relaxed text-fg-muted">{hero.trustLine}</p>
             </motion.div>
@@ -197,7 +211,7 @@ function FloatingChip({
   return (
     <motion.div
       aria-hidden="true"
-      className={`glass absolute z-20 hidden items-center gap-2 whitespace-nowrap rounded-full border border-line/15 px-3.5 py-2 text-[13px] font-medium text-fg shadow-lift sm:flex ${className}`}
+      className={`liquid-glass absolute z-20 hidden items-center gap-2 whitespace-nowrap rounded-full px-3.5 py-2 text-[13px] font-medium text-fg shadow-lift sm:flex ${className}`}
       style={{ z: depth }}
       initial={reduce ? false : { opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}

@@ -110,7 +110,7 @@ export const WaitlistForm: React.FC = () => {
       <div className="relative mx-auto grid max-w-[1300px] items-start gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
         <div className="lg:sticky lg:top-32">
           <Reveal y={12}>
-            <Eyebrow index="13" className="mb-6">
+            <Eyebrow index="14" className="mb-6">
               Early access
             </Eyebrow>
           </Reveal>

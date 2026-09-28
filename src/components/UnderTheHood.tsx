@@ -3,6 +3,7 @@ import { AnimatePresence, motion, useInView, useReducedMotion } from 'motion/rea
 import { Quote } from 'lucide-react';
 import { Section, SectionHeading } from '@/components/ui/section';
 import { Reveal } from '@/components/ui/reveal';
+import { ZoomOnScroll } from '@/components/ui/zoom-on-scroll';
 import { PulseDot } from '@/components/ui/bits';
 import { SignalField } from '@/components/three';
 import { cn } from '@/lib/utils';
@@ -44,14 +45,14 @@ export const UnderTheHood: React.FC = () => {
         lede="SatyaCheck checks three independent signals during a suspicious call and gives an explainable warning before money moves. One fake can fool one check. Fooling all three at once is much harder."
       />
 
-      <Reveal>
+      <ZoomOnScroll className="mx-auto max-w-[1400px] shadow-lift">
         <div
           ref={panelRef}
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
           onFocus={() => setPaused(true)}
           onBlur={() => setPaused(false)}
-          className="relative isolate overflow-hidden rounded-panel border border-white/10 bg-night text-white shadow-lift"
+          className="relative isolate overflow-hidden border border-white/10 bg-night text-white"
         >
           {/* 3D signal field */}
           <div className="relative h-[220px] sm:h-[300px]">
@@ -173,7 +174,7 @@ export const UnderTheHood: React.FC = () => {
             </div>
           </div>
         </div>
-      </Reveal>
+      </ZoomOnScroll>
 
       {/* Evidence band */}
       <Reveal className="mt-8">
