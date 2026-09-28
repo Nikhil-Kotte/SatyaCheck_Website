@@ -76,7 +76,7 @@ export function SpotlightCard({ children, className }: { children: ReactNode; cl
       ref={ref}
       onMouseMove={onMove}
       className={cn(
-        "group relative overflow-hidden rounded-card border border-line/15 bg-surface/70 transition-colors duration-300 hover:border-brand/40",
+        "liquid-glass group overflow-hidden rounded-card transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1",
         className
       )}
     >

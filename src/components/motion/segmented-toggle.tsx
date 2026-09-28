@@ -47,7 +47,7 @@ export function SegmentedToggle<T extends string>({
       aria-label={label}
       style={{ gridTemplateColumns: `repeat(${mobileColumns}, minmax(0, 1fr))` }}
       className={cn(
-        "grid w-full gap-1 rounded-2xl border border-line/15 bg-surface/70 p-1 backdrop-blur",
+        "liquid-glass grid w-full gap-1 rounded-2xl p-1",
         "sm:inline-flex sm:w-auto sm:flex-nowrap sm:rounded-full",
         className
       )}

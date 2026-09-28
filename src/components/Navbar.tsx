@@ -78,7 +78,7 @@ export const Navbar: React.FC = () => {
           className={cn(
             'mx-auto flex max-w-[1240px] items-center justify-between rounded-full border px-3 py-2 transition-[background-color,border-color,box-shadow,max-width] duration-500 sm:pl-5',
             scrolled || open
-              ? 'glass max-w-[1080px] border-line/15 shadow-[0_10px_40px_-15px_rgb(var(--shadow)/0.35)]'
+              ? 'liquid-glass max-w-[1080px]'
               : 'border-transparent bg-transparent'
           )}
         >

@@ -34,7 +34,7 @@ const variants: Record<Variant, string> = {
   primary:
     "bg-brand-solid text-on-brand shadow-[0_10px_30px_-10px_rgb(var(--brand-solid)/0.7),inset_0_1px_0_rgb(255_255_255/0.25)] hover:shadow-[0_18px_44px_-10px_rgb(var(--brand-solid)/0.85),inset_0_1px_0_rgb(255_255_255/0.3)]",
   secondary:
-    "border border-line/25 bg-surface/60 text-fg backdrop-blur hover:border-brand/60 hover:bg-surface hover:text-brand",
+    "liquid-glass text-fg hover:text-brand",
   ghost: "text-fg hover:bg-brand/10 hover:text-brand",
   light: "bg-white text-[#0B0D2A] hover:bg-white/90 shadow-[0_10px_30px_-10px_rgb(0_0_0/0.5)]",
 };

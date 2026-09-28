@@ -88,7 +88,7 @@ function SoundButton({
       aria-pressed={soundOn}
       aria-label={soundOn ? "Turn story sound off" : "Turn story sound on"}
       className={cn(
-        "inline-flex min-h-11 items-center gap-2 rounded-full border border-white/20 bg-black/40 px-4 py-2 text-xs font-semibold text-white backdrop-blur-md transition-colors hover:bg-black/60",
+        "liquid-glass-night inline-flex min-h-11 items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold text-white transition-transform hover:scale-[1.03]",
         className
       )}
     >
