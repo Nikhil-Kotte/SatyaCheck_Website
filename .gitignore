@@ -29,3 +29,4 @@ dist-ssr
 
 # Intermediate renders for the trailer (final files live in brag-output/ and public/videos/)
 brag-output/work/
+brag-output-*/work/

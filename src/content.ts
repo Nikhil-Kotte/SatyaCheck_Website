@@ -7,7 +7,13 @@ import type { SiteContent, TeamMember, Advisor, StoryStep, PipelineItem, Audienc
  */
 
 // Self-hosted trailer shown in the Demo section until the full demo is ready.
-export const DEMO_TRAILER = { video: "/videos/trailer.mp4", poster: "/videos/trailer.webp" };
+export const DEMO_TRAILER = {
+  video: "/videos/trailer.mp4",
+  poster: "/videos/trailer.webp",
+  // 9:16 cut, composed for phones rather than cropped from the 16:9 one.
+  videoVertical: "/videos/trailer-vertical.mp4",
+  posterVertical: "/videos/trailer-vertical.webp",
+};
 export const DEMO_VIDEO_URL: string = ""; // Set to YouTube / Vimeo embed URL when ready e.g. "https://www.youtube-nocookie.com/embed/..."
 export const CONTACT_EMAIL: string = "[contact@satyacheck.in]"; // e.g. "team@satyacheck.in"
 export const LINKEDIN_URL: string = ""; // Set to LinkedIn company / founder profile URL e.g. "https://www.linkedin.com/company/satyacheck"

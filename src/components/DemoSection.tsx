@@ -16,6 +16,7 @@ export const DemoSection: React.FC = () => {
   const { demo } = CONTENT;
   const [loaded, setLoaded] = useState(false);
   const hasVideo = demo.videoUrl.trim().length > 0;
+  const portrait = usePortraitPhone();
   const reduce = useReducedMotion();
   const frameRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: frameRef, offset: ['start end', 'center center'] });
@@ -38,7 +39,7 @@ export const DemoSection: React.FC = () => {
             <span className="h-3 w-3 rounded-full bg-ok/60" />
             <span className="ml-4 rounded-full bg-canvas-2 px-4 py-1 font-mono text-[11px] text-fg-subtle">satyacheck.in/demo</span>
           </div>
-          <div className="relative aspect-video w-full overflow-hidden rounded-[24px] bg-night">
+          <div className={`relative w-full overflow-hidden rounded-[24px] bg-night ${portrait && !hasVideo ? "mx-auto aspect-[9/16] max-h-[78svh] max-w-[calc(78svh*9/16)]" : "aspect-video"}`}>
             {hasVideo ? (
               <>
                 {!loaded && <Skeleton className="absolute inset-0 h-full w-full rounded-none" />}
@@ -53,7 +54,7 @@ export const DemoSection: React.FC = () => {
                 />
               </>
             ) : (
-              <TrailerPlayer />
+              <TrailerPlayer vertical={portrait} />
             )}
           </div>
         </motion.div>
@@ -84,7 +85,20 @@ export const DemoSection: React.FC = () => {
 };
 
 /** The 24-second product trailer, shown until the full demo video is ready. */
-function TrailerPlayer() {
+/** Phones held upright get the 9:16 trailer; everything else the 16:9 one. */
+function usePortraitPhone() {
+  const query = '(max-width: 639px) and (orientation: portrait)';
+  const [match, setMatch] = useState(() => window.matchMedia(query).matches);
+  useEffect(() => {
+    const m = window.matchMedia(query);
+    const on = () => setMatch(m.matches);
+    m.addEventListener('change', on);
+    return () => m.removeEventListener('change', on);
+  }, []);
+  return match;
+}
+
+function TrailerPlayer({ vertical }: { vertical: boolean }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [started, setStarted] = useState(false);
   const inView = useInView(ref, { amount: 0.3 });
@@ -107,8 +121,9 @@ function TrailerPlayer() {
       <video
         ref={ref}
         className="absolute inset-0 h-full w-full object-cover"
-        src={DEMO_TRAILER.video}
-        poster={DEMO_TRAILER.poster}
+        key={vertical ? 'v' : 'h'}
+        src={vertical ? DEMO_TRAILER.videoVertical : DEMO_TRAILER.video}
+        poster={vertical ? DEMO_TRAILER.posterVertical : DEMO_TRAILER.poster}
         preload="metadata"
         playsInline
         controls={started}
