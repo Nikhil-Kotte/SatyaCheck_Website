@@ -38,3 +38,16 @@ export function SignalField({ className }: { className?: string }) {
     </Suspense>
   );
 }
+
+const ParticleMorphImpl = lazy(() => import("./particle-morph"));
+
+/** Waveform → voiceprint globe → shield. `getProgress` returns 0..2. */
+export function ParticleMorph({ className, getProgress }: { className?: string; getProgress: () => number }) {
+  const ready = useIdleReady();
+  if (!ready) return null;
+  return (
+    <Suspense fallback={null}>
+      <ParticleMorphImpl className={className} getProgress={getProgress} />
+    </Suspense>
+  );
+}
