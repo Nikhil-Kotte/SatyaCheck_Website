@@ -1,10 +1,10 @@
-import React, { useRef, useState } from 'react';
-import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
+import React, { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion, useInView, useReducedMotion, useScroll, useTransform } from 'motion/react';
 import { CheckCircle2, Play, ShieldAlert, ShieldX } from 'lucide-react';
 import { Section, SectionHeading } from '@/components/ui/section';
 import { Reveal } from '@/components/ui/reveal';
 import { Skeleton } from '@/components/motion/skeleton';
-import { CONTENT } from '@/content';
+import { CONTENT, DEMO_TRAILER } from '@/content';
 
 const SCENARIOS = [
   { icon: CheckCircle2, title: 'A genuine call', result: 'Stays green', tone: 'text-ok', ring: 'border-ok/30 bg-ok/10' },
@@ -24,7 +24,7 @@ export const DemoSection: React.FC = () => {
 
   return (
     <Section id="demo" labelledBy="demo-heading">
-      <SectionHeading id="demo-heading" index="03" eyebrow="Demo" title={`See it *catch a scam*`} lede={demo.caption} />
+      <SectionHeading id="demo-heading" index="05" eyebrow="Demo" title={`See it *catch a scam*`} lede={demo.caption} />
 
       <div style={{ perspective: 1600 }}>
         <motion.div
@@ -53,20 +53,16 @@ export const DemoSection: React.FC = () => {
                 />
               </>
             ) : (
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center text-white">
-                <div aria-hidden="true" className="bg-grid absolute inset-0 opacity-30 [--line:140_150_255]" />
-                <div aria-hidden="true" className="absolute left-1/2 top-1/2 h-[60%] w-[60%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#3d4bff]/30 blur-[90px]" />
-                <div className="relative grid h-20 w-20 place-items-center rounded-full bg-white/10 backdrop-blur sm:h-24 sm:w-24">
-                  <span className="absolute inset-0 rounded-full border border-white/30 motion-safe:animate-pulse-ring" />
-                  <Play className="ml-1 h-8 w-8 fill-white" aria-hidden="true" />
-                </div>
-                <h3 className="relative mt-6 font-display text-2xl font-semibold tracking-tight sm:text-3xl">{demo.placeholderTitle}</h3>
-                <p className="relative mt-3 max-w-md text-sm text-white/65 sm:text-base">{demo.placeholderSub}</p>
-              </div>
+              <TrailerPlayer />
             )}
           </div>
         </motion.div>
       </div>
+      {!hasVideo && (
+        <p className="mx-auto mt-4 max-w-[1200px] text-center font-mono text-[11px] uppercase tracking-[0.18em] text-fg-subtle sm:hidden">
+          24-second trailer with sound · full demo coming soon
+        </p>
+      )}
 
       <div className="mx-auto mt-6 grid max-w-[1200px] gap-3 sm:grid-cols-3">
         {SCENARIOS.map((s, i) => (
@@ -86,3 +82,64 @@ export const DemoSection: React.FC = () => {
     </Section>
   );
 };
+
+/** The 24-second product trailer, shown until the full demo video is ready. */
+function TrailerPlayer() {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [started, setStarted] = useState(false);
+  const inView = useInView(ref, { amount: 0.3 });
+
+  // Never keep playing (with sound) once the visitor has scrolled away.
+  useEffect(() => {
+    if (!inView) ref.current?.pause();
+  }, [inView]);
+
+  const play = () => {
+    const v = ref.current;
+    if (!v) return;
+    setStarted(true);
+    v.currentTime = 0;
+    void v.play();
+  };
+
+  return (
+    <>
+      <video
+        ref={ref}
+        className="absolute inset-0 h-full w-full object-cover"
+        src={DEMO_TRAILER.video}
+        poster={DEMO_TRAILER.poster}
+        preload="metadata"
+        playsInline
+        controls={started}
+        onEnded={() => setStarted(false)}
+        aria-label="SatyaCheck trailer: a cloned son's call is checked for identity, synthetic speech and scam intent, and flagged with its reasons, while a bank's genuine automated call is not."
+      />
+      <AnimatePresence>
+        {!started && (
+          <motion.button
+            type="button"
+            onClick={play}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="group absolute inset-0 flex items-end justify-start bg-gradient-to-t from-black/70 via-transparent to-transparent p-5 text-left text-white sm:p-8"
+            aria-label="Play the SatyaCheck trailer with sound"
+          >
+            {/* Bottom-left, so the poster's "It's his voice. It isn't him." stays readable. */}
+            <span className="flex items-center gap-4">
+              <span className="relative grid h-12 w-12 shrink-0 place-items-center rounded-full bg-white text-[#0B0D2A] shadow-lift transition-transform duration-300 group-hover:scale-110 sm:h-16 sm:w-16">
+                <span className="absolute inset-0 rounded-full border border-white/60 motion-safe:animate-pulse-ring" />
+                <Play className="ml-1 h-5 w-5 fill-current sm:h-6 sm:w-6" aria-hidden="true" />
+              </span>
+              <span className="hidden sm:block">
+                <span className="block font-display text-lg font-semibold tracking-tight sm:text-2xl">Watch the trailer</span>
+                <span className="mt-1 block font-mono text-[11px] uppercase tracking-[0.18em] text-white/70">24 sec · with sound · full demo coming soon</span>
+              </span>
+            </span>
+          </motion.button>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}

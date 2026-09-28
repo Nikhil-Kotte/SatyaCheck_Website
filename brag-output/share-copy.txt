@@ -1,0 +1,1 @@
+It's his voice. It isn't him. SatyaCheck listens to a call on speakerphone and checks who's speaking, whether the voice is synthetic, and what they're asking for, then shows its evidence in Hindi, English or Hinglish. It can tell a cloned son demanding ₹50,000 from a bank IVR that just happens to be synthetic, and it runs fully offline.
