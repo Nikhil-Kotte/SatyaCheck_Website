@@ -94,10 +94,11 @@ All editable website copy, links, team members, contact information, and placeho
 - **`STORY_TEXT` & `STORY_VIDEO_URL`**: Founders' mission statement and pitch embed.
 - **`WHATSAPP_NUMBER` & `PHONE_NUMBER`**: Direct contact numbers.
 - **`FORM_ENDPOINT`**: Your deployed Google Apps Script web app URL (or via `.env` variable `VITE_FORM_ENDPOINT`).
-- **`DEMO_VIDEO_URL`**: YouTube / Vimeo embed URL. If left empty (`""`), the site displays an elegant "Demo video coming soon" placeholder.
+- **`DEMO_VIDEO_URL`**: YouTube / Vimeo embed URL for the full demo. While it is empty, the Demo section plays the 24-second trailer from **`DEMO_TRAILER`** (`public/videos/trailer.mp4`, exported from `brag-output/brag.mp4`).
+- **`PROBLEM`, `WHY_NOW`, `USER_FLOW`, `BLIND_SPOTS`, `VALIDATION`, `COMPETITORS`**: content from the Eureka! 2026 pitch deck (the problem and its numbers, why today's fixes fall short, why now, the four-step user flow, the blind-spot matrix, test results and surveys, and the competitor comparison). Every figure keeps its source; update them together with the deck.
 - **`CONTACT_EMAIL`**: Contact email for inquiries and privacy requests.
 - **`LINKEDIN_URL`**: Company or founder LinkedIn URL. Automatically hidden in footer if empty.
-- **`TEAM`**: Array of 4 team members with `[Name]`, `[Role]`, `[One concrete achievement]`, and optional photo/LinkedIn.
+- **`TEAM`**: The four co-founders with a one-line background each, and optional `photoUrl` (initials show when empty) and `linkedinUrl`.
 - **`ADVISORS`**: Optional array of advisors. Rendered only when entries are added.
 
 ---
