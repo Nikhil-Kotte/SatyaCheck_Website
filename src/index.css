@@ -264,3 +264,15 @@ html.lenis body {
   .liquid-glass { background: rgb(var(--surface) / 0.94); }
   .liquid-glass-night { background: rgb(11 13 42 / 0.85); }
 }
+
+/* User-flow stage: text never drops below 11px, except on the smallest
+   screens, where secondary lines hide and the caption card carries the words. */
+.flow-stage { --fmin: 11px; }
+@container (max-width: 300px) {
+  .flow-stage * { --fmin: 9px; }
+  .cq-hide { display: none !important; }
+}
+@media (max-height: 520px) and (orientation: landscape) {
+  .flow-stage * { --fmin: 9px; }
+  .flow-stage .cq-hide { display: none !important; }
+}

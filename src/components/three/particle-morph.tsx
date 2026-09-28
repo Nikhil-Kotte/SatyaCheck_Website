@@ -162,7 +162,9 @@ type Props = {
 export default function ParticleMorph({ className, getProgress }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const progressRef = useRef(getProgress);
-  progressRef.current = getProgress;
+  useEffect(() => {
+    progressRef.current = getProgress;
+  }, [getProgress]);
 
   useEffect(() => {
     const el = ref.current;
