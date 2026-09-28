@@ -32,6 +32,8 @@ export interface ResultCardItem {
 export interface PipelineItem {
   step: string;
   title: string;
+  /** The plain question this check answers. */
+  question: string;
   description: string;
   status: string;
 }

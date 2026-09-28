@@ -6,6 +6,8 @@ import type { SiteContent, TeamMember, Advisor, StoryStep, PipelineItem, Audienc
  * Placeholders are clearly marked with brackets or empty strings.
  */
 
+// Self-hosted trailer shown in the Demo section until the full demo is ready.
+export const DEMO_TRAILER = { video: "/videos/trailer.mp4", poster: "/videos/trailer.webp" };
 export const DEMO_VIDEO_URL: string = ""; // Set to YouTube / Vimeo embed URL when ready e.g. "https://www.youtube-nocookie.com/embed/..."
 export const CONTACT_EMAIL: string = "[contact@satyacheck.in]"; // e.g. "team@satyacheck.in"
 export const LINKEDIN_URL: string = ""; // Set to LinkedIn company / founder profile URL e.g. "https://www.linkedin.com/company/satyacheck"
@@ -21,7 +23,9 @@ export const VIDEO_CREDIT: string = "Story videos are AI-generated illustrations
 export const STORY_VIDEO_URL: string = ""; 
 
 // Founder story statement
-export const STORY_TEXT: string = "[Two or three sentences from the founders about why this matters to you.]";
+// From the pitch deck. TODO(team): replace with your own words if you prefer.
+export const STORY_TEXT: string =
+  "A scammer doesn't need access to your parent's bank account. They only need to sound like someone your parent trusts. Today, families can verify the number. They can't verify the person. We're building SatyaCheck so they can.";
 
 // Contact block links: any empty value hides its button automatically
 export const WHATSAPP_NUMBER: string = ""; // e.g. "919876543210" (opens https://wa.me/919876543210)
@@ -95,24 +99,28 @@ export const PIPELINE: PipelineItem[] = [
   {
     step: "01",
     title: "Voice match.",
+    question: "Is this actually your son?",
     description: "Compares the caller with the family member's enrolled voiceprint.",
     status: "Working",
   },
   {
     step: "02",
     title: "Synthetic speech check.",
+    question: "Is the voice synthetic?",
     description: "Looks for the acoustic fingerprints of AI-generated voices.",
     status: "In testing",
   },
   {
     step: "03",
     title: "Scam-script match.",
+    question: "Does this sound like a scam?",
     description: "Matches the conversation against Indian scam scripts in Hindi, English and Hinglish.",
     status: "Working",
   },
   {
     step: "04",
     title: "Fusion and evidence.",
+    question: "So, should you trust this call?",
     description: "Combines all three and quotes the matched line as the reason.",
     status: "Working",
   },
@@ -142,6 +150,7 @@ export const AUDIENCE_CONTENT: {
       "Warnings arrive during the call, before a transfer is approved.",
       "Every alert carries its evidence, useful for your fraud team.",
       "Built for Indian languages and Indian scam patterns.",
+      "Start with a free 6 to 8 week pilot on your own scam-call samples.",
     ],
     diagram: {
       step1: "Bank",
@@ -164,36 +173,115 @@ export const AUDIENCE_CONTENT: {
 
 export const TEAM: TeamMember[] = [
   {
-    name: "[Founder Name]",
-    role: "[Founder & AI Audio Lead]",
-    achievement: "[One concrete achievement]",
+    name: "Nikhil Kotte",
+    role: "Co-founder",
+    achievement: "B.E CSE undergraduate specialising in computer vision, AI developer tooling and multi-agent systems. 2nd Prize, Forge Inspira Hackathon 2026, IIT Hyderabad.",
     photoUrl: "",
     linkedinUrl: "",
   },
   {
-    name: "[Co-Founder Name]",
-    role: "[Co-Founder & Systems Lead]",
-    achievement: "[One concrete achievement]",
+    name: "Srujan Kondameedi",
+    role: "Co-founder",
+    achievement: "B.E CSE (AIML) undergraduate focused on production ML, research and intelligent agent systems, with expertise in medical imaging, forecasting and physics-informed ML.",
     photoUrl: "",
     linkedinUrl: "",
   },
   {
-    name: "[Team Member Name]",
-    role: "[NLP & Scam Detection Lead]",
-    achievement: "[One concrete achievement]",
+    name: "Manideep Munjampally",
+    role: "Co-founder",
+    achievement: "B.E CSE undergraduate specialising in LLM agents, multi-agent systems and full-stack AI applications. HackerRank Orchestrate Silver Medalist, ranked #93 among 35,712 developers.",
     photoUrl: "",
     linkedinUrl: "",
   },
   {
-    name: "[Team Member Name]",
-    role: "[Mobile & Telephony Engineer]",
-    achievement: "[One concrete achievement]",
+    name: "Goutham Katthi",
+    role: "Co-founder",
+    achievement: "B.E CSE undergraduate specialising in React, Vue.js, Supabase and AI-powered applications, with strong expertise in web development and problem solving.",
     photoUrl: "",
     linkedinUrl: "",
   },
 ];
 
 export const ADVISORS: Advisor[] = []; // Add advisors when confirmed; only rendered if non-empty
+
+/* ------------------------------------------------------------------ */
+/* From the Eureka! 2026 pitch deck. Every figure keeps its source.   */
+/* ------------------------------------------------------------------ */
+
+export const PROBLEM = {
+  statement: "The number can be real. The voice can be fake.",
+  sub: "A scammer doesn't need access to your parent's bank account. They only need to sound like someone your parent trusts.",
+  stats: [
+    { value: 22495, prefix: "₹", suffix: " Cr", label: "lost to cyber fraud in India in 2025", source: "MHA, Lok Sabha reply, Feb 2026" },
+    { value: 28.15, decimals: 2, suffix: " lakh", label: "cyber fraud cases in 2025, up 24%", source: "MHA, Lok Sabha reply, Feb 2026" },
+    { value: 3, suffix: " sec", label: "of audio can be enough to clone a voice", source: "McAfee, 2023" },
+    { value: 85, suffix: "%", label: "voice match from that short clip", source: "McAfee, 2023" },
+  ],
+  band: { left: "Number ≠ Person", right: "Today, families can verify the number. They can't verify the person." },
+  fallsShort: [
+    { today: "Check the caller's number", why: "Numbers can be spoofed, or a SIM may be newly acquired." },
+    { today: "Caller-ID and spam apps", why: "They identify the number, not the person speaking." },
+    { today: "Family codewords", why: "They can be forgotten under panic and are not independently verified." },
+    { today: "Report to 1930", why: "It is a response mechanism after suspicious activity or money movement." },
+  ],
+};
+
+export const WHY_NOW = [
+  { title: "Cloning is cheap", body: "Seconds of audio and free tools are enough to create a convincing voice impersonation." },
+  { title: "Regulators are pushing", body: "RBI is pushing banks beyond OTP-only checks; TRAI's CNAP now verifies caller names." },
+  { title: "Rules are clear", body: "DPDP Rules 2025 are now notified law: voice data needs verifiable consent." },
+];
+
+export const USER_FLOW = [
+  { step: "Enrol", body: "A family member records a short voice sample, with consent. We keep the voiceprint, never the recording." },
+  { step: "Route", body: "The parent's calls pass through the SatyaCheck line using call forwarding. The caller installs nothing." },
+  { step: "Analyse", body: "Voice, speech and scam-script checks run while the call is still live." },
+  { step: "Act", body: "A warning with its reason, an alert to the real family member, and one tap to report to 1930." },
+];
+
+// true = raises a flag, false = misses it, null = not applicable.
+export const BLIND_SPOTS: {
+  caller: string;
+  voiceprint: boolean | null;
+  synthetic: boolean;
+  script: boolean;
+  caught: boolean;
+}[] = [
+  { caller: "AI clone of your son's voice", voiceprint: false, synthetic: true, script: true, caught: true },
+  { caller: "A real person posing as your son", voiceprint: true, synthetic: false, script: true, caught: true },
+  { caller: "Human fake officer: \"digital arrest\"", voiceprint: null, synthetic: false, script: true, caught: true },
+  { caller: "Your bank's genuine AI assistant", voiceprint: null, synthetic: true, script: false, caught: false },
+];
+
+export const VALIDATION = {
+  surveys: [
+    { value: 49, label: "of Indians surveyed would consider using a scam-detection tool for greater peace of mind.", source: "McAfee Global Prime Day Scams Study 2025. Online survey of 5,000+ adults across India and four other countries; India-specific sample size not disclosed." },
+    { value: 57, label: "of Indian consumers want banks to provide better fraud detection.", source: "FICO 2024 Scams Impact Survey: India; approximately 1,000 Indian adults surveyed." },
+    { value: 50, label: "want more proactive scam warnings.", source: "FICO 2024 Scams Impact Survey: India; approximately 1,000 Indian adults surveyed." },
+  ],
+  // Cosine similarity to the enrolled voiceprint.
+  similarity: [
+    { label: "The real voice", value: 0.9 },
+    { label: "An AI clone", value: 0.8 },
+    { label: "A stranger", value: 0.2 },
+  ],
+  similarityTakeaway: "The clone lands only 0.10 below the real voice. A voiceprint alone catches strangers, not clones. That is exactly why we fuse it with the synthetic-speech and scam-script checks.",
+  similarityNote: "Cosine similarity to the enrolled voiceprint. Sample: 2 speakers, 5 clips, 1 clone. Enough to calibrate, not to generalise.",
+  tests: [
+    { value: "6 / 6", label: "test files classified correctly", tone: "ok" as const },
+    { value: "12 / 12", label: "behavioural scenarios pass", tone: "ok" as const },
+    { value: "8 kHz: failed", label: "Our phone-quality audio test failed. Next: retrain on codec-degraded audio.", tone: "risk" as const },
+  ],
+};
+
+export const COMPETITORS = {
+  rows: [
+    { name: "Hiya", approach: "Warns live during the call about AI voices and scam language.", edge: "Verifies the specific family member and quotes the matched script." },
+    { name: "Google Pixel", approach: "Fake-call and scam detection runs on-device, but only on Pixel phones.", edge: "Works on any phone through call routing. Built on Indian scam scripts in Hindi, English and Hinglish." },
+    { name: "Truecaller", approach: "AI call scanner: the user taps to check whether a voice sounds AI-generated.", edge: "Automatic, identity-aware, and still catches a human reading a scam script." },
+  ],
+  note: "Competitor capabilities as publicly described in 2025 and 2026.",
+};
 
 export const CONTENT: SiteContent = {
   meta: {

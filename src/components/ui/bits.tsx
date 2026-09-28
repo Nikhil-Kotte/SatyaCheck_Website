@@ -82,7 +82,19 @@ export function PulseDot({ className, tone = "brand" }: { className?: string; to
 }
 
 /** Counts up to `to` once it scrolls into view. */
-export function Counter({ to, suffix = "", prefix = "", className }: { to: number; suffix?: string; prefix?: string; className?: string }) {
+export function Counter({
+  to,
+  suffix = "",
+  prefix = "",
+  decimals = 0,
+  className,
+}: {
+  to: number;
+  suffix?: string;
+  prefix?: string;
+  decimals?: number;
+  className?: string;
+}) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.6 });
   const reduce = useReducedMotion();
@@ -90,15 +102,20 @@ export function Counter({ to, suffix = "", prefix = "", className }: { to: numbe
 
   useEffect(() => {
     if (!inView || reduce) return;
-    const c = animate(0, to, { duration: 1.6, ease: [0.22, 1, 0.36, 1], onUpdate: (v) => setVal(Math.round(v)) });
+    const c = animate(0, to, { duration: 1.6, ease: [0.22, 1, 0.36, 1], onUpdate: setVal });
     return () => c.stop();
   }, [inView, reduce, to]);
 
+  // Indian digit grouping (22,495; 1,00,000) with fixed decimals.
+  const text = val.toLocaleString("en-IN", { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+
   return (
-    <span ref={ref} className={className}>
-      {prefix}
-      {val}
-      {suffix}
+    <span ref={ref} className={className} aria-label={`${prefix}${to.toLocaleString("en-IN")}${suffix}`}>
+      <span aria-hidden="true">
+        {prefix}
+        {text}
+        {suffix}
+      </span>
     </span>
   );
 }
