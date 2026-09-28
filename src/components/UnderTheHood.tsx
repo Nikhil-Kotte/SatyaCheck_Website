@@ -6,7 +6,7 @@ import { Reveal } from '@/components/ui/reveal';
 import { PulseDot } from '@/components/ui/bits';
 import { SignalField } from '@/components/three';
 import { cn } from '@/lib/utils';
-import { CONTENT, PIPELINE } from '@/content';
+import { BLIND_SPOTS, CONTENT, PIPELINE } from '@/content';
 
 const CYCLE_MS = 5200;
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -38,10 +38,10 @@ export const UnderTheHood: React.FC = () => {
     <Section id="how-it-works" labelledBy="how-heading">
       <SectionHeading
         id="how-heading"
-        index="02"
+        index="03"
         eyebrow={underTheHood.eyebrow}
-        title="Three checks. *One clear answer.*"
-        lede="One fake can fool one check. Fooling all three at once is much harder."
+        title="Don't detect the voice. *Verify the person.*"
+        lede="SatyaCheck checks three independent signals during a suspicious call and gives an explainable warning before money moves. One fake can fool one check. Fooling all three at once is much harder."
       />
 
       <Reveal>
@@ -112,6 +112,9 @@ export const UnderTheHood: React.FC = () => {
                             {row.status}
                           </span>
                         </div>
+                        <p className={cn('mt-1 font-serif text-[17px] italic transition-colors', selected ? 'text-[#b9c1ff]' : 'text-white/40')}>
+                          {row.question}
+                        </p>
                         <p
                           className={cn(
                             'mt-1.5 text-sm leading-relaxed transition-colors',
@@ -198,9 +201,87 @@ export const UnderTheHood: React.FC = () => {
           </div>
         </div>
       </Reveal>
+      <BlindSpotMatrix />
     </Section>
   );
 };
+
+/** Which check catches which caller: no single check covers every case. */
+function BlindSpotMatrix() {
+  const reduce = useReducedMotion();
+  const cols = ['Voiceprint', 'Synthetic speech', 'Scam script'] as const;
+  const Mark = ({ v, i }: { v: boolean | null; i: number }) =>
+    v === null ? (
+      <span className="font-mono text-[11px] text-white/35">N/A</span>
+    ) : v ? (
+      <motion.span
+        className="inline-block h-3.5 w-3.5 rounded-full bg-rose-400 shadow-[0_0_14px_rgba(251,113,133,0.7)]"
+        initial={reduce ? false : { scale: 0 }}
+        whileInView={{ scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2 + i * 0.06, type: 'spring', stiffness: 400, damping: 15 }}
+        aria-label="Raises a flag"
+      />
+    ) : (
+      <span className="inline-block h-3.5 w-3.5 rounded-full border-2 border-white/40" aria-label="Misses it" />
+    );
+
+  return (
+    <Reveal className="mt-8">
+      <div className="overflow-hidden rounded-panel border border-white/10 bg-night p-6 text-white sm:p-10">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <h3 className="max-w-xl font-display text-[clamp(24px,2.6vw,38px)] font-semibold leading-tight tracking-[-0.03em]">
+            Three checks, each covering <span className="font-serif font-normal italic text-[#b9c1ff]">another's blind spot</span>
+          </h3>
+          <p className="text-sm text-white/55">A synthetic voice only counts as risk when the conversation looks like a scam.</p>
+        </div>
+
+        <div className="-mx-6 mt-8 overflow-x-auto px-6 sm:mx-0 sm:px-0" data-lenis-prevent>
+          <table className="w-full min-w-[620px] text-left">
+            <caption className="sr-only">Which check flags which kind of caller</caption>
+            <thead>
+              <tr className="border-b border-white/10 font-mono text-[11px] uppercase tracking-[0.15em] text-rose-300">
+                <th scope="col" className="py-3 pr-4 font-medium">Who is calling</th>
+                {cols.map((c) => (
+                  <th key={c} scope="col" className="px-3 py-3 text-center font-medium">
+                    {c}
+                  </th>
+                ))}
+                <th scope="col" className="py-3 pl-3 text-right font-medium">Verdict</th>
+              </tr>
+            </thead>
+            <tbody>
+              {BLIND_SPOTS.map((r, i) => (
+                <tr key={r.caller} className="border-b border-white/5 transition-colors hover:bg-white/[0.03]">
+                  <th scope="row" className="py-4 pr-4 text-[15px] font-normal text-white/85">{r.caller}</th>
+                  <td className="px-3 py-4 text-center"><Mark v={r.voiceprint} i={i * 3} /></td>
+                  <td className="px-3 py-4 text-center"><Mark v={r.synthetic} i={i * 3 + 1} /></td>
+                  <td className="px-3 py-4 text-center"><Mark v={r.script} i={i * 3 + 2} /></td>
+                  <td className="py-4 pl-3 text-right">
+                    <span
+                      className={cn(
+                        'inline-flex rounded-full border px-3 py-1 font-display text-sm font-semibold',
+                        r.caught ? 'border-rose-400/40 bg-rose-400/10 text-rose-300' : 'border-emerald-400/30 bg-emerald-400/10 text-emerald-300'
+                      )}
+                    >
+                      {r.caught ? 'Caught' : 'Not flagged'}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="mt-5 flex flex-wrap items-center gap-5 text-xs text-white/55">
+          <span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-full bg-rose-400" /> Raises a flag</span>
+          <span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-full border-2 border-white/40" /> Misses it</span>
+          <span>We still catch a real person reading a scam script, which AI-voice-only detectors miss.</span>
+        </div>
+      </div>
+    </Reveal>
+  );
+}
 
 /* ---------- Check visuals (illustrative) ---------- */
 
