@@ -3,27 +3,21 @@ import { animate, motion, useInView, useReducedMotion, useScroll, useSpring } fr
 import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/lib/theme-context";
+import logoMark from "@/assets/logo-mark.png";
 
-/** Brand mark: a voice waveform resolving into a check. */
+/** Brand mark: a speaking face inside a shield, its voice leaving as a waveform. */
 export function LogoMark({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 32 32" className={cn("h-8 w-8", className)} aria-hidden="true">
-      <defs>
-        <linearGradient id="sc-logo" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="rgb(var(--brand-hi))" />
-          <stop offset="1" stopColor="rgb(var(--brand-solid))" />
-        </linearGradient>
-      </defs>
-      <rect width="32" height="32" rx="9" fill="url(#sc-logo)" />
-      <path
-        d="M6.5 16v0M9.5 12.5v7M12.5 14.5v3"
-        stroke="#fff"
-        strokeWidth="2.2"
-        strokeLinecap="round"
-        opacity="0.75"
-      />
-      <path d="M15 16.5l3.2 3.3L25.5 11" fill="none" stroke="#fff" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
+    <img
+      src={logoMark}
+      alt=""
+      aria-hidden="true"
+      width={128}
+      height={128}
+      decoding="async"
+      draggable={false}
+      className={cn("h-8 w-8 shrink-0 select-none object-contain dark:drop-shadow-[0_0_10px_rgba(80,140,255,0.35)]", className)}
+    />
   );
 }
 

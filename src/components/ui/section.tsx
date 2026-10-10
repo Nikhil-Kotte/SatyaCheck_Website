@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { DecodeText } from "@/components/motion/decode-text";
 import { Reveal, WordReveal } from "./reveal";
 
 type SectionProps = {
@@ -30,9 +31,9 @@ export function Eyebrow({ index, children, className }: { index?: string; childr
         className
       )}
     >
-      {index && <span className="text-fg-subtle">[{index}]</span>}
+      {index && <DecodeText text={`[${index}]`} className="text-fg-subtle" />}
       <span className="h-px w-6 bg-brand/50" aria-hidden="true" />
-      <span>{children}</span>
+      {typeof children === "string" ? <DecodeText text={children} delay={index ? 140 : 0} /> : <span>{children}</span>}
     </p>
   );
 }

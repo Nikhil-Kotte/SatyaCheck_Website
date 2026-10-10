@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion, useMotionValueEvent, useReducedMotion, useScroll } from 'motion/react';
 import { Globe } from 'lucide-react';
@@ -6,6 +6,7 @@ import { Logo, ThemeToggle } from '@/components/ui/bits';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/lib/use-language';
 import { scrollToHash } from '@/lib/smooth-scroll';
+import { useProximityDock } from '@/lib/use-proximity-dock';
 import { cn } from '@/lib/utils';
 import { CONTENT } from '@/content';
 
@@ -37,7 +38,7 @@ function useActiveSection(enabled: boolean) {
 export const Navbar: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [hovered, setHovered] = useState<string | null>(null);
+  const dockRef = useRef<HTMLUListElement>(null);
   const location = useLocation();
   const navigate = useNavigate();
   const reduce = useReducedMotion();
@@ -45,6 +46,7 @@ export const Navbar: React.FC = () => {
   const isHome = ['/', '/hi', '/te'].includes(location.pathname);
   const { scrollY } = useScroll();
   const active = useActiveSection(isHome);
+  useProximityDock(dockRef);
 
   useMotionValueEvent(scrollY, 'change', (y) => setScrolled(y > 24));
 
@@ -86,20 +88,26 @@ export const Navbar: React.FC = () => {
             <Logo />
           </Link>
 
-          <ul className="hidden items-center gap-0.5 lg:flex" onMouseLeave={() => setHovered(null)}>
+          <ul ref={dockRef} className="hidden items-center gap-0.5 lg:flex">
             {LINKS.map((link) => {
               const isActive = active === link.href;
               return (
-                <li key={link.href} className="relative">
+                <li key={link.href} data-dock-item className="relative">
                   <a
                     href={isHome ? link.href : `/${link.href}`}
                     onClick={(e) => go(e, link.href)}
-                    onMouseEnter={() => setHovered(link.href)}
+                    data-dock-link
                     className={cn(
-                      'relative z-10 block rounded-full px-4 py-2.5 text-[14px] font-medium transition-colors',
+                      'group relative z-10 block rounded-full px-4 py-2.5 text-[14px] font-medium transition-colors will-change-transform',
                       isActive ? 'text-brand' : 'text-fg-muted hover:text-fg'
                     )}
                   >
+                    {/* Proximity glow. The dock drives its size and opacity; plain hover covers static mode. */}
+                    <span
+                      data-dock-bg
+                      aria-hidden="true"
+                      className="absolute inset-0 -z-10 rounded-full bg-brand/[0.09] opacity-0 ring-1 ring-inset ring-brand/10 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100"
+                    />
                     {link.label}
                     {isActive && (
                       <motion.span
@@ -109,13 +117,6 @@ export const Navbar: React.FC = () => {
                       />
                     )}
                   </a>
-                  {hovered === link.href && (
-                    <motion.span
-                      layoutId="nav-hover"
-                      className="absolute inset-0 rounded-full bg-brand/[0.08]"
-                      transition={{ type: 'spring', stiffness: 380, damping: 32 }}
-                    />
-                  )}
                 </li>
               );
             })}
