@@ -70,7 +70,7 @@ export const FamilyResults: React.FC = () => {
                 className={cn(
                   'group relative shrink-0 rounded-2xl border text-left transition-all duration-300 lg:w-full',
                   'px-4 py-3 lg:px-6 lg:py-5',
-                  selected ? cn('bg-surface shadow-card', s.ring) : 'border-line/10 hover:border-line/25 hover:bg-surface/50'
+                  selected ? cn('bg-surface shadow-card', s.ring) : 'border-line/20 hover:border-line/45 hover:bg-surface/50'
                 )}
               >
                 <span className="flex items-center gap-3">
@@ -103,12 +103,12 @@ export const FamilyResults: React.FC = () => {
         <div className="relative mx-auto">
           <motion.div
             aria-hidden="true"
-            className="absolute left-1/2 top-1/2 h-[120%] w-[140%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[100px]"
-            animate={{ backgroundColor: `rgb(${st.glow} / 0.28)` }}
+            className="absolute -inset-x-10 inset-y-10 -rotate-3 rounded-[40px] border-2 border-edge"
+            animate={{ backgroundColor: `rgb(${st.glow} / 0.22)` }}
             transition={{ duration: 0.8 }}
           />
           <TiltCard max={7} className="rounded-[46px]">
-            <div className="relative w-[290px] rounded-[46px] bg-[#0B0D2A] p-[10px] shadow-lift ring-1 ring-white/10 sm:w-[320px]">
+            <div className="relative w-[290px] rounded-[46px] bg-ink p-[10px] shadow-[10px_10px_0_0_rgb(var(--pop))] ring-2 ring-ink sm:w-[320px]">
               <div
                 id="result-panel"
                 role="tabpanel"
@@ -151,7 +151,7 @@ export const FamilyResults: React.FC = () => {
       </div>
 
       <Reveal className="mx-auto mt-14 max-w-[1400px]">
-        <p className="flex items-start gap-3 rounded-2xl border border-dashed border-line/25 p-5 text-fg-muted">
+        <p className="flex items-start gap-3 rounded-2xl border border-dashed border-line/45 p-5 text-fg-muted">
           <HelpCircle className="mt-0.5 h-5 w-5 shrink-0 text-brand" aria-hidden="true" />
           {familyResults.note}
         </p>

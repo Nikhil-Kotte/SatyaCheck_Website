@@ -56,7 +56,7 @@ export const VoiceprintJourney: React.FC = () => {
           </div>
           <ol className="space-y-4">
             {STAGES.map((s) => (
-              <li key={s.label} className="liquid-glass rounded-card p-6">
+              <li key={s.label} className="pop rounded-card p-6">
                 <h3 className="font-display text-2xl font-semibold tracking-tight text-fg">{s.title}</h3>
                 <p className="mt-2 text-fg-muted">{s.body}</p>
               </li>
@@ -73,13 +73,12 @@ export const VoiceprintJourney: React.FC = () => {
       <div className="sticky top-0 flex h-[100svh] w-full items-center overflow-hidden px-fluid">
         {/* Colour fields behind the glass */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-          <div className="absolute left-[8%] top-[18%] h-[42vh] w-[42vh] rounded-full bg-brand/15 blur-[110px]" />
           <motion.div
-            className="absolute bottom-[10%] right-[12%] h-[46vh] w-[46vh] rounded-full blur-[120px]"
+            className="absolute bottom-[10%] right-[12%] h-[46vh] w-[46vh] rounded-full opacity-0 blur-[120px]"
             animate={{ backgroundColor: stage === 2 ? 'rgb(var(--ok) / 0.18)' : 'rgb(var(--brand-hi) / 0.18)' }}
             transition={{ duration: 1 }}
           />
-          <div className="bg-grid mask-radial absolute inset-0 opacity-50" />
+          <div className="bg-dots mask-radial absolute inset-0 opacity-50" />
         </div>
 
         <div className="relative mx-auto flex h-full w-full max-w-[1400px] flex-col justify-center gap-4 pb-6 pt-24 lg:grid lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center lg:gap-12 lg:py-0">
@@ -88,7 +87,7 @@ export const VoiceprintJourney: React.FC = () => {
             <div className="order-1">
               <Eyebrow index="10">Your voice, protected</Eyebrow>
             </div>
-            <div className="liquid-glass order-3 rounded-panel p-5 sm:p-8 lg:mt-8">
+            <div className="pop order-3 rounded-panel p-5 sm:p-8 lg:mt-8">
               <div className="flex flex-wrap items-center gap-1.5">
                 {STAGES.map((st, i) => (
                   <span

@@ -28,15 +28,13 @@ type ButtonProps = {
 };
 
 const base =
-  "group relative isolate inline-flex select-none items-center justify-center gap-2 overflow-hidden rounded-full font-display font-semibold tracking-[-0.01em] transition-[background-color,border-color,color,box-shadow,transform] duration-300 active:scale-[0.97] disabled:pointer-events-none disabled:opacity-60";
+  "group relative isolate inline-flex select-none items-center justify-center gap-2 rounded-[14px] font-display font-bold tracking-[-0.01em] disabled:pointer-events-none disabled:opacity-60";
 
 const variants: Record<Variant, string> = {
-  primary:
-    "bg-brand-solid text-on-brand shadow-[0_10px_30px_-10px_rgb(var(--brand-solid)/0.7),inset_0_1px_0_rgb(255_255_255/0.25)] hover:shadow-[0_18px_44px_-10px_rgb(var(--brand-solid)/0.85),inset_0_1px_0_rgb(255_255_255/0.3)]",
-  secondary:
-    "liquid-glass text-fg hover:text-brand",
-  ghost: "text-fg hover:bg-brand/10 hover:text-brand",
-  light: "bg-white text-[#0B0D2A] hover:bg-white/90 shadow-[0_10px_30px_-10px_rgb(0_0_0/0.5)]",
+  primary: "pop pop-press !bg-brand-solid text-on-brand",
+  secondary: "pop pop-press text-fg",
+  ghost: "text-fg transition-colors hover:bg-fg/10",
+  light: "pop-press border-2 border-ink bg-white text-ink shadow-[5px_5px_0_0_#0A0B1C]",
 };
 
 const sizes: Record<Size, string> = {
@@ -80,12 +78,6 @@ export function Button({
 
   const inner = (
     <>
-      {variant === "primary" && (
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 left-0 -z-10 w-1/3 -translate-x-[120%] bg-gradient-to-r from-transparent via-white/35 to-transparent opacity-0 group-hover:animate-shine group-hover:opacity-100"
-        />
-      )}
       {icon}
       <span>{children}</span>
       {arrow && (

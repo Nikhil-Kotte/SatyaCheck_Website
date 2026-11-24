@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 export const inputClass =
-  "w-full rounded-xl border border-line/20 bg-canvas/60 px-4 py-3 text-base text-fg sm:text-[15px] placeholder:text-fg-subtle transition-[border-color,box-shadow,background-color] duration-200 hover:border-line/35 focus:border-brand focus:bg-surface focus:outline-none focus:ring-4 focus:ring-brand/15";
+  "w-full rounded-xl border border-line/35 bg-canvas/60 px-4 py-3 text-base text-fg sm:text-[15px] placeholder:text-fg-subtle transition-[border-color,box-shadow,background-color] duration-200 hover:border-line/35 focus:border-brand focus:bg-surface focus:outline-none focus:ring-4 focus:ring-brand/15";
 
 type FieldProps = {
   id: string;

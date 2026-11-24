@@ -82,7 +82,7 @@ export function Overlay({ open, onClose, title, children, className }: OverlayPr
             aria-modal="true"
             aria-label={title}
             className={cn(
-              "liquid-glass relative w-full max-w-lg rounded-t-3xl p-6 sm:rounded-3xl sm:p-8",
+              "pop relative w-full max-w-lg rounded-t-3xl p-6 sm:rounded-3xl sm:p-8",
               "pb-[max(1.5rem,env(safe-area-inset-bottom))]",
               className
             )}

@@ -5,49 +5,124 @@
 /*
  * Design tokens. Values are space-separated RGB channels so Tailwind's
  * opacity modifiers work (e.g. bg-brand/10). Light is the default; the
- * `dark` class on <html> swaps every token.
+ * `dark` class swaps every token. `dark`, `.tone-brand` and `.tone-lime`
+ * also work on a single section, which re-themes everything inside it:
+ * that is how the page is colour-blocked.
  */
 @layer base {
   :root {
-    --canvas: 253 250 231;      /* cream */
-    --canvas-2: 246 241 214;
+    --canvas: 244 241 232;      /* paper */
+    --canvas-2: 234 230 218;
+    --tint: 234 230 218;
     --surface: 255 255 255;
-    --surface-2: 250 247 232;
-    --fg: 12 13 30;             /* ink */
-    --fg-muted: 84 86 108;
-    --fg-subtle: 126 128 148;
+    --surface-2: 248 246 240;
+    --fg: 10 11 28;             /* ink */
+    --fg-muted: 62 64 84;
+    --fg-subtle: 104 106 126;
     --brand: 30 43 250;         /* cobalt: text, icons, accents */
     --brand-solid: 30 43 250;   /* filled buttons */
-    --brand-hi: 110 120 255;    /* gradient partner */
+    --brand-hi: 30 43 250;
     --on-brand: 255 255 255;
-    --line: 30 43 250;
-    --shadow: 20 24 90;
-    --ok: 21 128 61;
-    --warn: 180 83 9;
-    --risk: 200 30 30;
+    --accent: 214 255 62;       /* highlighter lime */
+    --on-accent: 10 11 28;
+    --line: 10 11 28;           /* hairlines, at low alpha */
+    --edge: 10 11 28;           /* the 2px card and button outline */
+    --pop: 10 11 28;            /* hard offset shadow */
+    --shadow: 10 11 28;
+    --glow: 30 43 250;
+    --glow-warm: 214 255 62;
+    --ok: 15 122 58;
+    --warn: 176 80 0;
+    --risk: 205 28 28;
     --neutral: 82 90 105;
     color-scheme: light;
   }
 
   .dark {
-    --canvas: 5 6 20;
-    --canvas-2: 9 11 30;
-    --surface: 14 16 40;
-    --surface-2: 20 23 54;
-    --fg: 240 238 226;
-    --fg-muted: 163 166 194;
-    --fg-subtle: 112 115 146;
-    --brand: 128 140 255;
+    --canvas: 10 11 22;
+    --canvas-2: 16 17 32;
+    --tint: 16 17 32;
+    --surface: 20 22 40;
+    --surface-2: 28 30 54;
+    --fg: 244 241 232;
+    --fg-muted: 176 178 200;
+    --fg-subtle: 124 127 156;
+    --brand: 138 150 255;
     --brand-solid: 61 75 255;
-    --brand-hi: 150 120 255;
+    --brand-hi: 138 150 255;
     --on-brand: 255 255 255;
-    --line: 140 150 255;
+    --accent: 214 255 62;
+    --on-accent: 10 11 28;
+    --line: 244 241 232;
+    --edge: 244 241 232;
+    --pop: 61 75 255;
     --shadow: 0 0 0;
+    --glow: 61 75 255;
+    --glow-warm: 214 255 62;
     --ok: 74 222 128;
     --warn: 251 191 36;
-    --risk: 248 113 113;
+    --risk: 255 122 122;
     --neutral: 156 163 175;
     color-scheme: dark;
+  }
+
+  /* Cobalt block: white type, lime accents, navy cards. Same in both themes. */
+  .tone-brand {
+    --canvas: 30 43 250;
+    --canvas-2: 24 34 214;
+    --tint: 24 34 214;
+    --surface: 14 20 120;
+    --surface-2: 20 28 150;
+    --fg: 255 255 255;
+    --fg-muted: 214 219 255;
+    --fg-subtle: 176 184 255;
+    --brand: 214 255 62;
+    --brand-solid: 214 255 62;
+    --brand-hi: 214 255 62;
+    --on-brand: 10 11 28;
+    --accent: 214 255 62;
+    --on-accent: 10 11 28;
+    --line: 255 255 255;
+    --edge: 10 11 28;
+    --pop: 10 11 28;
+    --shadow: 4 8 80;
+    --ok: 190 255 120;
+    --warn: 255 214 102;
+    --risk: 255 176 176;
+    color-scheme: dark;
+  }
+
+  /* Lime block: ink type, cobalt accents, white cards. Same in both themes. */
+  .tone-lime {
+    --canvas: 214 255 62;
+    --canvas-2: 196 240 40;
+    --tint: 196 240 40;
+    --surface: 255 255 255;
+    --surface-2: 244 255 200;
+    --fg: 10 11 28;
+    --fg-muted: 44 50 30;
+    --fg-subtle: 70 80 44;
+    --brand: 30 43 250;
+    --brand-solid: 30 43 250;
+    --brand-hi: 30 43 250;
+    --on-brand: 255 255 255;
+    --accent: 10 11 28;
+    --on-accent: 214 255 62;
+    --line: 10 11 28;
+    --edge: 10 11 28;
+    --pop: 10 11 28;
+    --shadow: 10 11 28;
+    --ok: 15 122 58;
+    --warn: 150 66 0;
+    --risk: 190 20 20;
+    color-scheme: light;
+  }
+
+  .dark,
+  .tone-brand,
+  .tone-lime {
+    background-color: rgb(var(--canvas));
+    color: rgb(var(--fg));
   }
 
   html {
@@ -66,17 +141,18 @@
   }
 
   h1, h2, h3, h4 {
-    font-family: "Inter Tight", Inter, ui-sans-serif, system-ui, sans-serif;
-    letter-spacing: -0.035em;
+    font-family: "Bricolage Grotesque", Inter, ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.03em;
+    font-optical-sizing: auto;
   }
 
   ::selection {
-    background: rgb(var(--brand-solid));
-    color: rgb(var(--on-brand));
+    background: rgb(var(--accent));
+    color: rgb(var(--on-accent));
   }
 
   *:focus-visible {
-    outline: 2px solid rgb(var(--brand));
+    outline: 3px solid rgb(var(--brand));
     outline-offset: 3px;
     border-radius: 6px;
   }
@@ -89,31 +165,60 @@
   }
 
   .type-headline {
-    font-size: clamp(38px, 5.4vw, 92px);
-    line-height: 0.98;
-    letter-spacing: -0.045em;
+    font-size: clamp(40px, 6vw, 104px);
+    line-height: 0.96;
+    letter-spacing: -0.04em;
+    font-weight: 800;
   }
 
   .type-lede {
     font-size: clamp(17px, 1.35vw, 21px);
-    line-height: 1.6;
+    line-height: 1.55;
   }
 
-  /* Cobalt-to-violet gradient text. */
+  /* Was a gradient; the new system is flat colour only. */
   .gradient-text {
-    background-image: linear-gradient(100deg, rgb(var(--brand)) 10%, rgb(var(--brand-hi)) 60%, rgb(var(--brand)) 100%);
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: rgb(var(--brand));
   }
 
-  /* Faint engineering grid, used behind hero and sections. */
+  /* Highlighter: the accent treatment for a word or phrase in a headline. */
+  .marker {
+    display: inline-block;
+    background: rgb(var(--accent));
+    color: rgb(var(--on-accent));
+    padding: 0 0.14em 0.04em;
+    margin: 0 -0.02em;
+    border-radius: 0.12em;
+    transform: rotate(-1.5deg);
+  }
+
+  /* Same highlighter for word-by-word headlines: each word overlaps the
+     space next to it, so a phrase reads as one stroke. */
+  .marker-run {
+    display: inline-block;
+    background: rgb(var(--accent));
+    color: rgb(var(--on-accent));
+    padding: 0 0.25em 0.02em 0.08em;
+    margin: 0 -0.25em 0 0;
+  }
+
+  /* Engineering grid, used on the user-flow floor. */
   .bg-grid {
     background-image:
-      linear-gradient(rgb(var(--line) / 0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgb(var(--line) / 0.07) 1px, transparent 1px);
+      linear-gradient(rgb(var(--line) / 0.09) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--line) / 0.09) 1px, transparent 1px);
     background-size: 56px 56px;
+  }
+
+  /* Dot matrix: the default backdrop texture. */
+  .bg-dots {
+    background-image: radial-gradient(rgb(var(--line) / 0.22) 1.2px, transparent 1.4px);
+    background-size: 24px 24px;
+  }
+
+  /* Diagonal hatch, for ornament blocks. */
+  .bg-hatch {
+    background-image: repeating-linear-gradient(-45deg, rgb(var(--line) / 0.5) 0 1.5px, transparent 1.5px 9px);
   }
 
   .mask-fade-y {
@@ -122,8 +227,8 @@
   }
 
   .mask-fade-x {
-    -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
-    mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
   }
 
   .mask-radial {
@@ -132,9 +237,7 @@
   }
 
   .glass {
-    background: rgb(var(--surface) / 0.66);
-    backdrop-filter: blur(16px) saturate(1.4);
-    -webkit-backdrop-filter: blur(16px) saturate(1.4);
+    background: rgb(var(--surface));
   }
 
   .preserve-3d {
@@ -142,18 +245,55 @@
   }
 }
 
-/* Film grain overlay: adds texture so large flat areas never look plastic. */
+/*
+ * Pop card: the one surface of the system. Flat fill, 2px outline, hard
+ * offset shadow. No blur, no gradients.
+ */
+:where(.pop, .pop-night) {
+  position: relative;
+}
+.pop {
+  background: rgb(var(--surface));
+  border: 2px solid rgb(var(--edge));
+  box-shadow: 5px 5px 0 0 rgb(var(--pop));
+}
+.pop-sm {
+  box-shadow: 3px 3px 0 0 rgb(var(--pop));
+}
+.pop-lg {
+  box-shadow: 9px 9px 0 0 rgb(var(--pop));
+}
+/* Lifts toward the cursor, presses in on click. */
+.pop-press {
+  transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.18s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.2s, color 0.2s;
+}
+.pop-press:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 0 rgb(var(--pop));
+}
+.pop-press:active {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 0 rgb(var(--pop));
+}
+/* Controls that sit over video and the always-dark panels. */
+.pop-night {
+  background: rgb(10 11 28 / 0.82);
+  border: 2px solid rgb(255 255 255 / 0.85);
+  color: #fff;
+}
+
+/* Paper grain: keeps large flat colour blocks from looking plastic. */
 .grain::after {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 200;
-  opacity: 0.035;
+  opacity: 0.05;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 .dark .grain::after {
-  opacity: 0.06;
+  opacity: 0.07;
 }
 
 /* Lenis smooth scrolling. */
@@ -192,77 +332,15 @@ html.lenis body {
   }
 }
 
-/*
- * Liquid glass (Apple-inspired): heavy frosted blur with extra saturation,
- * a bright specular rim, a soft inner glow, and a highlight that follows the
- * pointer (--gx/--gy are set by useGlassPointer). Needs colour behind it to
- * shine, so sections that use it carry soft colour fields.
- */
-.liquid-glass {
-  position: relative;
-  isolation: isolate;
-  background: linear-gradient(135deg, rgb(255 255 255 / 0.62), rgb(255 255 255 / 0.22));
-  -webkit-backdrop-filter: blur(22px) saturate(1.9);
-  backdrop-filter: blur(22px) saturate(1.9);
-  border: 1px solid rgb(255 255 255 / 0.7);
-  box-shadow:
-    inset 0 1px 1px rgb(255 255 255 / 0.95),
-    inset 0 -10px 28px -16px rgb(var(--brand) / 0.22),
-    0 12px 40px -16px rgb(var(--shadow) / 0.32);
+/* Slow drift for ring ornaments. */
+@keyframes ring-breathe {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.04); opacity: 0.7; }
 }
-.liquid-glass::before,
-.liquid-glass::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  z-index: -1;
-}
-/* Fixed specular sheen across the top, like light on a curved lens. */
-.liquid-glass::before {
-  background:
-    radial-gradient(120% 70% at 18% -10%, rgb(255 255 255 / 0.7), transparent 55%),
-    radial-gradient(90% 60% at 100% 110%, rgb(var(--brand-hi) / 0.14), transparent 60%);
-}
-/* Moving highlight under the pointer. */
-.liquid-glass::after {
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  background: radial-gradient(260px circle at var(--gx, 50%) var(--gy, 50%), rgb(255 255 255 / 0.45), transparent 60%);
-}
-.liquid-glass:hover::after {
-  opacity: 1;
-}
-.dark .liquid-glass {
-  background: linear-gradient(135deg, rgb(255 255 255 / 0.12), rgb(255 255 255 / 0.03));
-  border-color: rgb(255 255 255 / 0.16);
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.28),
-    inset 0 -12px 32px -18px rgb(var(--brand) / 0.45),
-    0 12px 40px -16px rgb(0 0 0 / 0.7);
-}
-.dark .liquid-glass::before {
-  background:
-    radial-gradient(120% 70% at 18% -10%, rgb(255 255 255 / 0.16), transparent 55%),
-    radial-gradient(90% 60% at 100% 110%, rgb(var(--brand-hi) / 0.18), transparent 60%);
-}
-.dark .liquid-glass::after {
-  background: radial-gradient(260px circle at var(--gx, 50%) var(--gy, 50%), rgb(255 255 255 / 0.14), transparent 60%);
-}
-/* Glass for use over video and the always-dark panels. */
-.liquid-glass-night {
-  position: relative;
-  isolation: isolate;
-  background: linear-gradient(135deg, rgb(255 255 255 / 0.18), rgb(255 255 255 / 0.05));
-  -webkit-backdrop-filter: blur(16px) saturate(1.6);
-  backdrop-filter: blur(16px) saturate(1.6);
-  border: 1px solid rgb(255 255 255 / 0.22);
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.35), 0 8px 30px -10px rgb(0 0 0 / 0.6);
-}
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .liquid-glass { background: rgb(var(--surface) / 0.94); }
-  .liquid-glass-night { background: rgb(11 13 42 / 0.85); }
+.ring-breathe {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: ring-breathe 7s ease-in-out infinite;
 }
 
 /* User-flow stage: text never drops below 11px, except on the smallest

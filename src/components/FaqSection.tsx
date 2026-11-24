@@ -22,13 +22,13 @@ export const FaqSection: React.FC = () => {
   const reduce = useReducedMotion();
 
   return (
-    <Section id="faq" labelledBy="faq-heading">
+    <Section id="faq" labelledBy="faq-heading" tone="tint">
       <Aurora tone="brand" />
       <div className="mx-auto grid max-w-[1400px] gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
         <div className="lg:sticky lg:top-32 lg:self-start">
           <SectionHeading id="faq-heading" index="13" eyebrow="FAQ" title="Questions, *answered*" className="mb-8 lg:mb-10" />
           <Reveal>
-            <div className="liquid-glass rounded-panel p-6 sm:p-7">
+            <div className="pop rounded-panel p-6 sm:p-7">
               <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-brand">Good to know</p>
               <ul className="mt-4 space-y-3.5">
                 {GOOD_TO_KNOW.map(({ icon: Icon, text }) => (
@@ -40,7 +40,7 @@ export const FaqSection: React.FC = () => {
                   </li>
                 ))}
               </ul>
-              <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-line/10 pt-5">
+              <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-line/20 pt-5">
                 <p className="text-sm text-fg-muted">Something else? We read every message.</p>
                 <Button href="#work-with-us" variant="secondary" size="sm" arrow className="h-11">
                   Contact us
@@ -50,7 +50,7 @@ export const FaqSection: React.FC = () => {
           </Reveal>
         </div>
 
-        <div className="divide-y divide-line/15 border-y border-line/15">
+        <div className="divide-y divide-line/30 border-y border-line/30">
           {faq.items.map((item, i) => {
             const isOpen = open === i;
             return (
@@ -75,7 +75,7 @@ export const FaqSection: React.FC = () => {
                     <span
                       className={cn(
                         'grid h-10 w-10 shrink-0 place-items-center rounded-full border transition-all duration-300',
-                        isOpen ? 'rotate-45 border-transparent bg-brand-solid text-on-brand' : 'border-line/20 text-fg group-hover:border-brand/50'
+                        isOpen ? 'rotate-45 border-transparent bg-brand-solid text-on-brand' : 'border-line/35 text-fg group-hover:border-brand/50'
                       )}
                     >
                       <Plus className="h-5 w-5" aria-hidden="true" />

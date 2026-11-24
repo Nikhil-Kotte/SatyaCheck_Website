@@ -58,7 +58,7 @@ export const StatusTimeline: React.FC = () => {
                 <div
                   className={cn(
                     'h-full w-full rounded-card border p-6 transition-all duration-300 hover:-translate-y-1 sm:p-8',
-                    doing ? 'border-brand/40 bg-surface shadow-card' : 'border-line/15 bg-surface/60'
+                    doing ? 'border-brand/40 bg-surface shadow-card' : 'border-line/30 bg-surface/60'
                   )}
                 >
                   <p className="text-[17px] leading-relaxed text-fg">{item.description}</p>
@@ -70,7 +70,7 @@ export const StatusTimeline: React.FC = () => {
 
         <Validation />
 
-        <Reveal className="mt-10 flex flex-col items-start justify-between gap-6 rounded-card border border-dashed border-line/25 p-6 sm:flex-row sm:items-center sm:p-8">
+        <Reveal className="mt-10 flex flex-col items-start justify-between gap-6 rounded-card border border-dashed border-line/45 p-6 sm:flex-row sm:items-center sm:p-8">
           <p className="font-display text-xl font-medium tracking-tight text-fg sm:text-2xl">{status.closingLine}</p>
           <Button href="#work-with-us" variant="secondary" arrow className="shrink-0">
             Ask us
@@ -135,7 +135,7 @@ function Validation() {
         {VALIDATION.surveys.map((sv, i) => (
           <Reveal key={sv.label} delay={i * 0.08} className="flex-1">
             <div className="flex h-full gap-5 rounded-card border-l-2 border-brand bg-surface/70 p-6">
-              <p className="shrink-0 font-display text-5xl font-semibold tracking-[-0.05em]">
+              <p className="shrink-0 font-display text-5xl font-semibold tracking-[-0.035em]">
                 <Counter to={sv.value} suffix="%" className="gradient-text" />
               </p>
               <div>

@@ -13,6 +13,14 @@ export default {
     extend: {
       colors: {
         canvas: { DEFAULT: token('canvas'), 2: token('canvas-2') },
+        tint: token('tint'),
+        accent: token('accent'),
+        'on-accent': token('on-accent'),
+        edge: token('edge'),
+        pop: token('pop'),
+        ink: '#0A0B1C',
+        lime: '#D6FF3E',
+        glow: { DEFAULT: token('glow'), warm: token('glow-warm') },
         surface: { DEFAULT: token('surface'), 2: token('surface-2') },
         fg: { DEFAULT: token('fg'), muted: token('fg-muted'), subtle: token('fg-subtle') },
         brand: { DEFAULT: token('brand'), solid: token('brand-solid'), hi: token('brand-hi') },
@@ -26,19 +34,20 @@ export default {
         night: { DEFAULT: '#05061A', 2: '#0B0D2A', line: '#23265A' },
       },
       fontFamily: {
-        display: ['"Inter Tight"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['"Bricolage Grotesque"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         serif: ['"Instrument Serif"', 'ui-serif', 'Georgia', 'serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       borderRadius: {
-        card: '20px',
-        panel: '32px',
+        card: '16px',
+        panel: '24px',
       },
       boxShadow: {
-        card: '0 1px 0 0 rgb(var(--line) / 0.06), 0 12px 40px -18px rgb(var(--shadow) / 0.35)',
-        lift: '0 30px 80px -30px rgb(var(--shadow) / 0.55)',
-        glow: '0 0 0 1px rgb(var(--brand) / 0.3), 0 10px 40px -8px rgb(var(--brand) / 0.55)',
+        // Hard offset shadows only: the system has no soft blur.
+        card: '4px 4px 0 0 rgb(var(--pop))',
+        lift: '8px 8px 0 0 rgb(var(--pop))',
+        glow: '4px 4px 0 0 rgb(var(--brand))',
       },
       keyframes: {
         marquee: { from: { transform: 'translateX(0)' }, to: { transform: 'translateX(-50%)' } },

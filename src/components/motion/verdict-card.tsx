@@ -38,7 +38,7 @@ export function VerdictCard({ className }: { className?: string }) {
       <div
         role="img"
         aria-label="Illustration: SatyaCheck warns that a caller claiming to be Rahul may not be him, because the voice match is weak, synthetic speech is detected and the conversation matches a family-emergency scam."
-        className="relative rounded-[46px] bg-[#0B0D2A] p-[10px] shadow-[0_50px_100px_-30px_rgb(var(--shadow)/0.7),inset_0_0_0_1.5px_rgb(255_255_255/0.08)] ring-1 ring-white/10"
+        className="relative rounded-[46px] bg-ink p-[10px] shadow-[10px_10px_0_0_rgb(10_11_28/0.9)] ring-2 ring-ink"
       >
         {/* Side buttons */}
         <span className="absolute -left-[3px] top-28 h-10 w-[3px] rounded-l bg-[#1a1d45]" aria-hidden="true" />
@@ -52,8 +52,8 @@ export function VerdictCard({ className }: { className?: string }) {
           {/* Ambient glow that turns red when the call is flagged */}
           <motion.div
             aria-hidden="true"
-            className="pointer-events-none absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full blur-3xl"
-            animate={{ backgroundColor: flagged ? "rgb(var(--risk) / 0.28)" : "rgb(var(--brand) / 0.22)" }}
+            className="pointer-events-none absolute inset-x-0 top-0 h-[150px]"
+            animate={{ backgroundColor: flagged ? "rgb(var(--risk) / 0.14)" : "rgb(var(--brand) / 0.1)" }}
             transition={{ duration: 0.8 }}
           />
           <div className="absolute left-1/2 top-3 h-[22px] w-[88px] -translate-x-1/2 rounded-full bg-[#0B0D2A]" />
@@ -79,7 +79,7 @@ export function VerdictCard({ className }: { className?: string }) {
                     animate={{ opacity: 1, x: 0, scale: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: reduce ? 0 : 0.4, ease: [0.22, 1, 0.36, 1] }}
-                    className="flex items-center justify-between rounded-xl border border-line/10 bg-canvas/70 px-3 py-2.5"
+                    className="flex items-center justify-between rounded-xl border border-line/20 bg-canvas/70 px-3 py-2.5"
                   >
                     <span className="flex items-center gap-2 text-[13px] text-fg">
                       <span className={cn("h-1.5 w-1.5 rounded-full", c.dot)} />
@@ -90,7 +90,27 @@ export function VerdictCard({ className }: { className?: string }) {
                 )}
               </AnimatePresence>
             ))}
+            {/* Checks still running: the screen is never left blank. */}
+            {CHECKS.slice(Math.min(visible, CHECKS.length)).map((c) => (
+              <li
+                key={`pending-${c.label}`}
+                className="flex items-center justify-between rounded-xl border border-dashed border-line/35 px-3 py-2.5"
+              >
+                <span className="flex items-center gap-2 text-[13px] text-fg-subtle">
+                  <span className="h-1.5 w-1.5 rounded-full bg-fg-subtle/50 motion-safe:animate-pulse" />
+                  {c.label}
+                </span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-fg-subtle">Checking</span>
+              </li>
+            ))}
           </ul>
+
+          {!flagged && (
+            <div aria-hidden="true" className="mt-auto grid grid-cols-2 gap-2 pt-6">
+              <span className="rounded-full bg-risk/10 py-3 text-center font-display text-sm font-semibold text-risk">Decline</span>
+              <span className="rounded-full bg-ok/15 py-3 text-center font-display text-sm font-semibold text-ok">Answer</span>
+            </div>
+          )}
 
           <AnimatePresence>
             {flagged && (
@@ -115,7 +135,7 @@ export function VerdictCard({ className }: { className?: string }) {
                   <span className="rounded-full bg-brand-solid py-3 text-center font-display text-sm font-semibold text-on-brand">
                     Call Rahul directly
                   </span>
-                  <span className="flex items-center justify-center gap-1.5 rounded-full border border-line/25 py-2.5 text-center font-display text-sm font-semibold text-fg">
+                  <span className="flex items-center justify-center gap-1.5 rounded-full border border-line/45 py-2.5 text-center font-display text-sm font-semibold text-fg">
                     <PhoneOff className="h-3.5 w-3.5" aria-hidden="true" />
                     Report to 1930
                   </span>
@@ -125,7 +145,7 @@ export function VerdictCard({ className }: { className?: string }) {
           </AnimatePresence>
         </motion.div>
       </div>
-      <figcaption className="mt-5 text-center font-mono text-[11px] font-medium uppercase tracking-[0.25em] text-fg-subtle">
+      <figcaption className="mt-6 text-center font-mono text-[11px] font-medium uppercase tracking-[0.25em] text-current opacity-70">
         Illustrative screen
       </figcaption>
     </figure>

@@ -15,6 +15,7 @@ import { TheStory } from '@/components/TheStory';
 import { FaqSection } from '@/components/FaqSection';
 import { WaitlistForm } from '@/components/WaitlistForm';
 import { WorkWithUs } from '@/components/WorkWithUs';
+import { WaveDivider } from '@/components/ui/section';
 import { STORY_STEPS } from '@/content';
 
 export const LandingPage: React.FC = () => (
@@ -24,13 +25,16 @@ export const LandingPage: React.FC = () => (
       <ScrollVideoStory steps={STORY_STEPS} />
     </div>
     <StatementBand />
+    <WaveDivider />
     <UnderTheHood />
     <UserFlow />
     <DemoSection />
     <FamilyResults />
+    <WaveDivider />
     <WhereDoYouFit />
     <HowWeDiffer />
     <StatusTimeline />
+    <WaveDivider />
     <VoiceprintJourney />
     <PrivacySummary />
     <TheStory />

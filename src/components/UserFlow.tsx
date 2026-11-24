@@ -118,7 +118,7 @@ function PinnedFlow() {
                       aria-current={active ? 'step' : undefined}
                       className={cn(
                         'w-full rounded-card p-4 text-left transition-all duration-500',
-                        active ? 'liquid-glass' : 'opacity-60 hover:opacity-90'
+                        active ? 'pop' : 'opacity-60 hover:opacity-90'
                       )}
                     >
                       <span className="flex items-center gap-3">
@@ -155,7 +155,7 @@ function PinnedFlow() {
               })}
             </ol>
 
-            <div className="liquid-glass rounded-panel p-5 lg:hidden">
+            <div className="pop rounded-panel p-5 lg:hidden">
               <div className="flex items-center gap-1.5">
                 {USER_FLOW.map((s, i) => (
                   <button
@@ -218,7 +218,7 @@ function StaticFlow() {
                 type="button"
                 onClick={() => setStep(i)}
                 aria-pressed={i === step}
-                className={cn('w-full rounded-card p-4 text-left', i === step ? 'liquid-glass' : 'opacity-70')}
+                className={cn('w-full rounded-card p-4 text-left', i === step ? 'pop' : 'opacity-70')}
               >
                 <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-fg-subtle">Step 0{i + 1}</span>
                 <span className="block font-display text-xl font-semibold text-fg">{s.step}</span>
@@ -261,7 +261,7 @@ function Stage({ step, still = false }: { step: number; still?: boolean }) {
         {/* Floor */}
         <div
           aria-hidden="true"
-          className="bg-grid absolute inset-[-6%] rounded-[36px] border border-line/10 bg-surface/30"
+          className="bg-grid absolute inset-[-6%] rounded-[36px] border border-line/20 bg-surface/30"
           style={{ transform: 'translateZ(-40px)' }}
         />
 
@@ -515,7 +515,7 @@ function Core({ step }: { step: number }) {
       <p className="mt-[calc(var(--u)*0.6)] font-display font-bold tracking-tight text-fg" style={fs(1.3)}>
         SatyaCheck
       </p>
-      <div className="liquid-glass mt-[calc(var(--u)*0.6)] w-full rounded-[calc(var(--u)*1.2)] p-[calc(var(--u)*0.8)]">
+      <div className="pop mt-[calc(var(--u)*0.6)] w-full rounded-[calc(var(--u)*1.2)] p-[calc(var(--u)*0.8)]">
         <AnimatePresence mode="wait">
           {step === 2 || step === 3 ? (
             <motion.ul key="checks" {...screen} className="space-y-[calc(var(--u)*0.35)]">

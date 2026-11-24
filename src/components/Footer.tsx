@@ -41,7 +41,7 @@ export const Footer: React.FC = () => {
   const linkClass = 'inline-block py-2.5 text-fg-muted transition-colors hover:text-brand';
 
   return (
-    <footer className="relative w-full overflow-hidden border-t border-line/10 bg-canvas-2/60 px-fluid pt-20">
+    <footer className="dark relative w-full overflow-hidden border-t-2 border-ink px-fluid pt-20">
       <div className="mx-auto max-w-[1400px]">
         <div className="grid gap-12 lg:grid-cols-[1.3fr_2fr]">
           <div>
@@ -103,7 +103,7 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col gap-4 border-t border-line/10 py-8 text-sm text-fg-subtle sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-16 flex flex-col gap-4 border-t border-line/20 py-8 text-sm text-fg-subtle sm:flex-row sm:items-center sm:justify-between">
           <p>{CONTENT.footer.copyrightText}</p>
           <p>{CONTENT.footer.videoCredit}</p>
           <div className="flex items-center gap-2">
@@ -112,7 +112,7 @@ export const Footer: React.FC = () => {
               type="button"
               onClick={() => scrollToY(0)}
               aria-label="Back to top"
-              className="grid h-10 w-10 place-items-center rounded-full border border-line/20 bg-surface/60 text-fg transition-colors hover:border-brand/50 hover:text-brand"
+              className="grid h-10 w-10 place-items-center rounded-full border border-line/35 bg-surface/60 text-fg transition-colors hover:border-brand/50 hover:text-brand"
             >
               <ArrowUp className="h-[18px] w-[18px]" aria-hidden="true" />
             </button>
@@ -123,12 +123,7 @@ export const Footer: React.FC = () => {
       {/* Oversized wordmark */}
       <p
         aria-hidden="true"
-        className="pointer-events-none mx-auto -mb-[0.22em] select-none whitespace-nowrap text-center font-display text-[17.5vw] font-bold leading-none tracking-[-0.07em] text-transparent"
-        style={{
-          backgroundImage: 'linear-gradient(to bottom, rgb(var(--brand) / 0.35), rgb(var(--brand) / 0.02) 80%)',
-          WebkitBackgroundClip: 'text',
-          backgroundClip: 'text',
-        }}
+        className="pointer-events-none mx-auto -mb-[0.2em] select-none whitespace-nowrap text-center font-display text-[17.5vw] font-extrabold leading-none tracking-[-0.045em] text-accent"
       >
         SatyaCheck
       </p>

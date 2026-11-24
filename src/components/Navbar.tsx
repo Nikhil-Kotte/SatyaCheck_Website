@@ -76,10 +76,10 @@ export const Navbar: React.FC = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className={cn(
-            'mx-auto flex max-w-[1240px] items-center justify-between rounded-full border px-3 py-2 transition-[background-color,border-color,box-shadow,max-width] duration-500 sm:pl-5',
+            'mx-auto flex max-w-[1240px] items-center justify-between rounded-[18px] px-3 py-2 transition-[background-color,border-color,box-shadow,max-width] duration-500 sm:pl-5',
             scrolled || open
-              ? 'liquid-glass max-w-[1080px]'
-              : 'border-transparent bg-transparent'
+              ? 'pop max-w-[1080px]'
+              : 'border-2 border-transparent bg-transparent'
           )}
         >
           <Link to="/" aria-label="SatyaCheck home" onClick={() => setOpen(false)} className="shrink-0 py-1.5">
@@ -96,15 +96,15 @@ export const Navbar: React.FC = () => {
                     onClick={(e) => go(e, link.href)}
                     onMouseEnter={() => setHovered(link.href)}
                     className={cn(
-                      'relative z-10 block rounded-full px-4 py-2.5 text-[14px] font-medium transition-colors',
-                      isActive ? 'text-brand' : 'text-fg-muted hover:text-fg'
+                      'relative z-10 block rounded-lg px-4 py-2.5 text-[14px] font-semibold transition-colors',
+                      isActive ? 'text-fg' : 'text-fg-muted hover:text-fg'
                     )}
                   >
                     {link.label}
                     {isActive && (
                       <motion.span
                         layoutId="nav-active"
-                        className="absolute inset-x-4 -bottom-0.5 h-[2px] rounded-full bg-brand"
+                        className="absolute inset-x-3 bottom-1.5 -z-10 h-[9px] rounded-sm bg-accent"
                         transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -112,7 +112,7 @@ export const Navbar: React.FC = () => {
                   {hovered === link.href && (
                     <motion.span
                       layoutId="nav-hover"
-                      className="absolute inset-0 rounded-full bg-brand/[0.08]"
+                      className="absolute inset-0 rounded-lg bg-fg/[0.07]"
                       transition={{ type: 'spring', stiffness: 380, damping: 32 }}
                     />
                   )}
@@ -128,7 +128,7 @@ export const Navbar: React.FC = () => {
                 <select
                   value={currentLang}
                   onChange={(e) => switchLanguage(e.target.value)}
-                  className="h-10 cursor-pointer appearance-none rounded-full border border-line/20 bg-surface/60 pl-3 pr-8 text-xs font-semibold text-fg"
+                  className="h-10 cursor-pointer appearance-none rounded-xl border-2 border-edge bg-surface pl-3 pr-8 text-xs font-semibold text-fg"
                 >
                   {liveLanguages.map((l) => (
                     <option key={l.code} value={l.code}>
@@ -149,7 +149,7 @@ export const Navbar: React.FC = () => {
               aria-label={open ? 'Close menu' : 'Open menu'}
               aria-expanded={open}
               aria-controls="mobile-menu"
-              className="relative grid h-10 w-10 place-items-center rounded-full border border-line/20 bg-surface/60 lg:hidden"
+              className="relative grid h-10 w-10 place-items-center rounded-xl border-2 border-edge bg-surface lg:hidden"
             >
               <span className="sr-only">Menu</span>
               <span
@@ -191,7 +191,7 @@ export const Navbar: React.FC = () => {
                   <a
                     href={isHome ? link.href : `/${link.href}`}
                     onClick={(e) => go(e, link.href)}
-                    className="flex items-baseline gap-4 border-b border-line/10 py-4 font-display text-4xl font-semibold tracking-tight text-fg short:py-2.5 short:text-2xl"
+                    className="flex items-baseline gap-4 border-b border-line/20 py-4 font-display text-4xl font-semibold tracking-tight text-fg short:py-2.5 short:text-2xl"
                   >
                     <span className="font-mono text-xs text-fg-subtle">0{i + 1}</span>
                     {link.label}

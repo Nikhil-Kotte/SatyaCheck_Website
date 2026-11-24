@@ -41,7 +41,7 @@ export const PrivacySummary: React.FC = () => {
   const rest = privacySummary.blocks.slice(1);
 
   return (
-    <Section id="privacy" labelledBy="privacy-heading">
+    <Section id="privacy" labelledBy="privacy-heading" tone="tint">
       <Aurora flip tone="ok" />
       <SectionHeading
         id="privacy-heading"
@@ -83,7 +83,7 @@ export const PrivacySummary: React.FC = () => {
 
 function IconBadge({ icon: Icon }: { icon: LucideIcon }) {
   return (
-    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border border-line/15 bg-brand/10 text-brand transition-transform duration-500 group-hover:rotate-[-8deg] group-hover:scale-110">
+    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border border-line/30 bg-brand/10 text-brand transition-transform duration-500 group-hover:rotate-[-8deg] group-hover:scale-110">
       <Icon className="h-6 w-6" aria-hidden="true" />
     </span>
   );
@@ -111,7 +111,7 @@ function VoiceprintExplainer() {
   const deleted = stage >= 2;
 
   return (
-    <div ref={ref} className="liquid-glass grid gap-8 overflow-hidden rounded-panel p-6 sm:p-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-12">
+    <div ref={ref} className="pop grid gap-8 overflow-hidden rounded-panel p-6 sm:p-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-12">
       {/* Left: the animated sequence */}
       <div className="min-w-0">
         <div className="flex items-start gap-4">
@@ -131,7 +131,7 @@ function VoiceprintExplainer() {
                 key={label}
                 className={cn(
                   'rounded-2xl border px-3 py-2.5 transition-colors duration-500',
-                  active ? 'border-brand/40 bg-brand/10' : 'border-line/10 bg-canvas/40'
+                  active ? 'border-brand/40 bg-brand/10' : 'border-line/20 bg-canvas/40'
                 )}
               >
                 <span className={cn('flex items-center gap-1.5 font-mono text-[11px]', done || active ? 'text-brand' : 'text-fg-subtle')}>
@@ -145,7 +145,7 @@ function VoiceprintExplainer() {
 
         <div className="mt-5 grid items-stretch gap-3 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
           {/* The recording */}
-          <div className="relative overflow-hidden rounded-2xl border border-line/15 bg-canvas/60 p-4">
+          <div className="relative overflow-hidden rounded-2xl border border-line/30 bg-canvas/60 p-4">
             <div className="flex items-center justify-between gap-2">
               <span className="flex items-center gap-2 text-sm font-medium text-fg">
                 <Mic className="h-4 w-4 text-brand" aria-hidden="true" />
@@ -199,7 +199,7 @@ function VoiceprintExplainer() {
             <span
               className={cn(
                 'grid h-10 w-10 rotate-90 place-items-center rounded-full border transition-colors duration-500 sm:rotate-0',
-                encoded ? 'border-brand/40 bg-brand-solid text-on-brand' : 'border-line/20 text-fg-subtle'
+                encoded ? 'border-brand/40 bg-brand-solid text-on-brand' : 'border-line/35 text-fg-subtle'
               )}
             >
               <ArrowRight className="h-4 w-4" />
@@ -207,7 +207,7 @@ function VoiceprintExplainer() {
           </div>
 
           {/* The voiceprint */}
-          <div className="rounded-2xl border border-line/15 bg-canvas/60 p-4">
+          <div className="rounded-2xl border border-line/30 bg-canvas/60 p-4">
             <div className="flex items-center justify-between gap-2">
               <span className="flex items-center gap-2 text-sm font-medium text-fg">
                 <Fingerprint className="h-4 w-4 text-brand" aria-hidden="true" />
@@ -245,7 +245,7 @@ function VoiceprintExplainer() {
 
       {/* Right: try it, and what we keep */}
       <div className="flex min-w-0 flex-col gap-4">
-        <div className="rounded-2xl border border-line/15 bg-canvas/50 p-5">
+        <div className="rounded-2xl border border-line/30 bg-canvas/50 p-5">
           <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-brand">Try it</p>
           <p className="mt-2 text-fg">Can anyone turn a voiceprint back into your voice?</p>
           <button

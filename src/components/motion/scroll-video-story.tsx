@@ -88,7 +88,7 @@ function SoundButton({
       aria-pressed={soundOn}
       aria-label={soundOn ? "Turn story sound off" : "Turn story sound on"}
       className={cn(
-        "liquid-glass-night inline-flex min-h-11 items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold text-white transition-transform hover:scale-[1.03]",
+        "pop-night inline-flex min-h-11 items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold text-white transition-transform hover:scale-[1.03]",
         className
       )}
     >
@@ -172,11 +172,11 @@ function PinnedStory({ steps, className, soundOn, setSoundOn }: ScrollVideoStory
         {/* Mood light that follows the story from danger to relief */}
         <motion.div
           aria-hidden="true"
-          className="pointer-events-none absolute right-[8%] top-1/2 h-[70vh] w-[70vh] -translate-y-1/2 rounded-full opacity-[0.22] blur-[140px] dark:opacity-30"
+          className="pointer-events-none absolute right-[8%] top-1/2 h-[70vh] w-[70vh] -translate-y-1/2 rounded-full opacity-[0.1] blur-[140px] dark:opacity-25"
           animate={{ backgroundColor: tone }}
           transition={{ duration: 1.2 }}
         />
-        <div aria-hidden="true" className="bg-grid mask-radial pointer-events-none absolute inset-0 opacity-40" />
+        <div aria-hidden="true" className="bg-dots mask-radial pointer-events-none absolute inset-0 opacity-40" />
 
         <div className="relative mx-auto grid w-full max-w-[1400px] grid-cols-[minmax(0,1.15fr)_40px_minmax(0,0.85fr)] items-center gap-[clamp(24px,4vw,72px)]">
           {/* Text */}
@@ -195,7 +195,7 @@ function PinnedStory({ steps, className, soundOn, setSoundOn }: ScrollVideoStory
                 >
                   <div className="flex items-center gap-4">
                     <span
-                      className="font-display text-[clamp(64px,7vw,120px)] font-bold leading-none tracking-[-0.06em] text-transparent"
+                      className="font-display text-[clamp(64px,7vw,120px)] font-bold leading-none tracking-[-0.035em] text-transparent"
                       style={{ WebkitTextStroke: `1.5px ${tone}` }}
                       aria-hidden="true"
                     >
@@ -208,7 +208,7 @@ function PinnedStory({ steps, className, soundOn, setSoundOn }: ScrollVideoStory
                       {step.label}
                     </span>
                   </div>
-                  <h2 className="mt-6 max-w-[15ch] font-display text-[clamp(40px,4.6vw,80px)] font-semibold leading-[1] tracking-[-0.045em] text-fg">
+                  <h2 className="mt-6 max-w-[15ch] font-display text-[clamp(40px,4.6vw,80px)] font-semibold leading-[1] tracking-[-0.035em] text-fg">
                     {step.headline}
                   </h2>
                   <p className="type-lede mt-6 max-w-xl text-fg-muted">{step.sub}</p>
@@ -254,7 +254,7 @@ function PinnedStory({ steps, className, soundOn, setSoundOn }: ScrollVideoStory
               <span className="absolute h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full blur-xl" style={{ background: tone, opacity: 0.35 }} />
               <span
                 className="absolute h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full ring-4 ring-canvas"
-                style={{ background: tone, boxShadow: `0 0 18px 4px ${tone}` }}
+                style={{ background: tone }}
               />
             </motion.div>
             {steps.map((s, i) => (
@@ -273,7 +273,7 @@ function PinnedStory({ steps, className, soundOn, setSoundOn }: ScrollVideoStory
               style={{ background: `rgb(${TONE_RGB[step.tone]} / 0.35)` }}
               aria-hidden="true"
             />
-            <div className="relative aspect-[9/16] h-[min(78svh,760px)] overflow-hidden rounded-[40px] border border-white/10 bg-[#0B0D2A] shadow-lift">
+            <div className="relative aspect-[9/16] h-[min(78svh,760px)] overflow-hidden rounded-[40px] border-2 border-ink bg-ink shadow-lift">
               {steps.map((s, i) => (
                 <video
                   key={s.id}
@@ -375,7 +375,7 @@ function StackedStep({
     <li className="short:grid short:grid-cols-[auto_1fr] short:items-center short:gap-10">
       <div className="relative mx-auto w-[min(78vw,360px,calc(76svh*9/16))] short:w-[calc(82svh*9/16)]">
         <div className="absolute -inset-3 rounded-[40px] opacity-50 blur-2xl" style={{ background: tone }} aria-hidden="true" />
-        <div className="relative aspect-[9/16] overflow-hidden rounded-[32px] border border-white/10 bg-[#0B0D2A] shadow-lift">
+        <div className="relative aspect-[9/16] overflow-hidden rounded-[32px] border-2 border-ink bg-ink shadow-lift">
           <video
             ref={ref}
             className="h-full w-full object-cover"
@@ -404,7 +404,7 @@ function StackedStep({
           {step.label}
         </span>
       </div>
-      <h2 className="mt-4 font-display text-[clamp(32px,8vw,48px)] font-semibold leading-[1.02] tracking-[-0.04em] text-fg">{step.headline}</h2>
+      <h2 className="mt-4 font-display text-[clamp(32px,8vw,48px)] font-semibold leading-[1.02] tracking-[-0.03em] text-fg">{step.headline}</h2>
       <p className="mt-4 text-lg leading-relaxed text-fg-muted">{step.sub}</p>
       </div>
     </li>

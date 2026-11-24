@@ -9,7 +9,6 @@ import { ScrollProgress } from '@/components/ui/bits';
 import { LanguageProvider } from '@/lib/i18n';
 import { ThemeProvider } from '@/lib/theme';
 import { scrollToHash, scrollToTop, useSmoothScroll } from '@/lib/smooth-scroll';
-import { useGlassPointer } from '@/lib/use-glass-pointer';
 
 /** Resets scroll on navigation, or jumps to the #hash once the page has rendered. */
 function ScrollManager() {
@@ -26,7 +25,6 @@ function ScrollManager() {
 
 export const App: React.FC = () => {
   useSmoothScroll();
-  useGlassPointer();
 
   return (
     <ThemeProvider>

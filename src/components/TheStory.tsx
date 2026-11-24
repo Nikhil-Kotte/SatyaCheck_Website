@@ -32,7 +32,6 @@ function initials(name: string) {
 export const TheStory: React.FC = () => (
   <Section id="team" labelledBy="story-heading" className="overflow-hidden">
     <span id="story" className="absolute -top-24" aria-hidden="true" />
-    <div aria-hidden="true" className="pointer-events-none absolute right-[-10%] top-[20%] h-[520px] w-[520px] rounded-full bg-brand-hi/[0.12] blur-[140px]" />
 
     <SectionHeading
       id="story-heading"
@@ -45,7 +44,7 @@ export const TheStory: React.FC = () => (
     <div className="relative mx-auto grid max-w-[1400px] gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-12">
       {/* The story */}
       <Reveal className="h-full">
-        <blockquote className="liquid-glass flex h-full flex-col rounded-panel p-7 sm:p-10">
+        <blockquote className="pop flex h-full flex-col rounded-panel p-7 sm:p-10">
           <span aria-hidden="true" className="-mb-6 font-serif text-[120px] leading-none text-brand/25">
             “
           </span>
@@ -77,7 +76,7 @@ export const TheStory: React.FC = () => (
         {TEAM.map((m, i) => (
           <Reveal key={m.name} delay={i * 0.08} className="h-full">
             <TiltCard max={8} className="rounded-card">
-              <article className="liquid-glass flex h-full flex-col rounded-card p-6">
+              <article className="pop flex h-full flex-col rounded-card p-6">
                 <div className="flex items-center gap-4">
                   {m.photoUrl?.trim() ? (
                     <img src={m.photoUrl} alt={m.name} loading="lazy" className="h-14 w-14 shrink-0 rounded-2xl object-cover" />
@@ -117,7 +116,7 @@ export const TheStory: React.FC = () => (
     <div className="relative mx-auto mt-4 grid max-w-[1400px] gap-4 md:grid-cols-3">
       {CREDENTIALS.map((c, i) => (
         <Reveal key={c.title} delay={i * 0.08} className="h-full">
-          <div className="liquid-glass flex h-full items-center gap-4 rounded-card p-5">
+          <div className="pop flex h-full items-center gap-4 rounded-card p-5">
             <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-brand/10 text-brand">
               <c.icon className="h-6 w-6" aria-hidden="true" />
             </span>

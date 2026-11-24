@@ -24,14 +24,14 @@ export const DemoSection: React.FC = () => {
   const scale = useTransform(scrollYProgress, [0, 1], [reduce ? 1 : 0.9, 1]);
 
   return (
-    <Section id="demo" labelledBy="demo-heading">
+    <Section id="demo" labelledBy="demo-heading" tone="lime">
       <SectionHeading id="demo-heading" index="05" eyebrow="Demo" title={`See it *catch a scam*`} lede={demo.caption} />
 
       <div style={{ perspective: 1600 }}>
         <motion.div
           ref={frameRef}
           style={{ rotateX, scale, transformOrigin: 'center top' }}
-          className="relative mx-auto max-w-[1200px] overflow-hidden rounded-panel border border-line/15 bg-surface p-2 shadow-lift"
+          className="relative mx-auto max-w-[1200px] overflow-hidden rounded-panel border border-line/30 bg-surface p-2 shadow-lift"
         >
           <div className="flex items-center gap-1.5 px-4 py-3" aria-hidden="true">
             <span className="h-3 w-3 rounded-full bg-risk/60" />
@@ -68,7 +68,7 @@ export const DemoSection: React.FC = () => {
       <div className="mx-auto mt-6 grid max-w-[1200px] gap-3 sm:grid-cols-3">
         {SCENARIOS.map((s, i) => (
           <Reveal key={s.title} delay={i * 0.08}>
-            <div className="flex h-full items-center gap-4 rounded-card border border-line/15 bg-surface/70 p-5 transition-transform duration-300 hover:-translate-y-1">
+            <div className="flex h-full items-center gap-4 rounded-card border border-line/30 bg-surface/70 p-5 transition-transform duration-300 hover:-translate-y-1">
               <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl border ${s.ring}`}>
                 <s.icon className={`h-5 w-5 ${s.tone}`} aria-hidden="true" />
               </span>

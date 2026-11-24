@@ -101,10 +101,9 @@ export const WaitlistForm: React.FC = () => {
   };
 
   return (
-    <section id="waitlist" className="relative w-full scroll-mt-24 overflow-hidden px-fluid py-24 lg:py-36" aria-labelledby="waitlist-heading">
+    <section id="waitlist" className="tone-brand relative w-full scroll-mt-24 overflow-hidden border-y-2 border-ink px-fluid py-24 lg:py-36" aria-labelledby="waitlist-heading">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-0">
-        <div className="absolute left-1/2 top-1/2 h-[900px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand/[0.12] blur-[160px]" />
-        <div className="bg-grid mask-radial absolute inset-0 opacity-60" />
+        <div className="bg-dots mask-radial absolute inset-0 opacity-60" />
       </div>
 
       <div className="relative mx-auto grid max-w-[1300px] items-start gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
@@ -125,7 +124,7 @@ export const WaitlistForm: React.FC = () => {
           <ol className="mt-10 space-y-4">
             {NEXT_STEPS.map((s, i) => (
               <Reveal as="li" key={s} delay={0.15 + i * 0.08} className="flex items-center gap-4">
-                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-line/20 bg-surface font-mono text-xs text-brand">
+                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-line/35 bg-surface font-mono text-xs text-brand">
                   0{i + 1}
                 </span>
                 <span className="text-fg">{s}</span>

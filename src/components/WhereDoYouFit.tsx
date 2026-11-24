@@ -70,8 +70,8 @@ export const WhereDoYouFit: React.FC = () => {
         </div>
       </SectionHeading>
 
-      <div className="relative mx-auto max-w-[1300px] overflow-hidden rounded-panel border border-line/15 bg-surface/70 shadow-card">
-        <div aria-hidden="true" className="bg-grid absolute inset-0 opacity-50 mask-fade-y" />
+      <div className="relative mx-auto max-w-[1300px] overflow-hidden rounded-panel border border-line/30 bg-surface/70 shadow-card">
+        <div aria-hidden="true" className="bg-dots absolute inset-0 opacity-50 mask-fade-y" />
         <AnimatePresence mode="wait">
           <motion.div
             key={tab}
@@ -85,7 +85,7 @@ export const WhereDoYouFit: React.FC = () => {
               {current.eyebrow && (
                 <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-brand">{current.eyebrow}</p>
               )}
-              <h3 className="font-display text-[clamp(30px,3.4vw,52px)] font-semibold leading-[1.02] tracking-[-0.04em] text-fg">
+              <h3 className="font-display text-[clamp(30px,3.4vw,52px)] font-semibold leading-[1.02] tracking-[-0.03em] text-fg">
                 {current.headline}
               </h3>
               {current.body && <p className="mt-6 text-lg leading-relaxed text-fg-muted">{current.body}</p>}
@@ -147,7 +147,7 @@ function FlowDiagram({ nodes, loop }: { nodes: FlowNode[]; loop?: string }) {
               'relative flex items-center gap-4 rounded-2xl border p-5',
               n.core
                 ? 'border-transparent bg-brand-solid text-on-brand shadow-glow'
-                : 'border-line/15 bg-surface text-fg'
+                : 'border-line/30 bg-surface text-fg'
             )}
           >
             {n.core && (
@@ -189,7 +189,7 @@ function Connector() {
       {[0, 0.6].map((d) => (
         <span
           key={d}
-          className="absolute left-1/2 h-2 w-2 -translate-x-1/2 rounded-full bg-brand shadow-[0_0_10px_rgb(var(--brand))] motion-safe:animate-flow-dot motion-reduce:hidden"
+          className="absolute left-1/2 h-2 w-2 -translate-x-1/2 rounded-full bg-brand shadow-none motion-safe:animate-flow-dot motion-reduce:hidden"
           style={{ animationDelay: `${d}s` }}
         />
       ))}

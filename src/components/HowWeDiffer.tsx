@@ -7,7 +7,7 @@ import { COMPETITORS } from '@/content';
 
 /** Side-by-side with the tools people already know, as publicly described. */
 export const HowWeDiffer: React.FC = () => (
-  <Section id="compare" labelledBy="compare-heading">
+  <Section id="compare" labelledBy="compare-heading" tone="brand">
       <Aurora tone="brand" />
     <SectionHeading
       id="compare-heading"

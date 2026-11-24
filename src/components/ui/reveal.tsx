@@ -79,13 +79,13 @@ export function WordReveal({ text, className, accentClassName, as = "h2", id, de
     >
       {words.map(({ w, accent }, i) => (
         <Fragment key={i}>
-          <span aria-hidden="true" className="inline-block overflow-hidden pb-[0.12em] -mb-[0.12em] align-bottom">
+          <span aria-hidden="true" className="inline-block overflow-hidden pr-[0.32em] pb-[0.14em] pt-[0.04em] -mr-[0.32em] -mb-[0.14em] -mt-[0.04em] align-bottom">
             <motion.span
               custom={i}
               variants={word}
               className={cn(
                 "inline-block",
-                accent && cn("font-serif font-normal italic tracking-[-0.02em] text-brand", accentClassName)
+                accent && cn("marker-run", accentClassName)
               )}
             >
               {w}

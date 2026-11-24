@@ -46,7 +46,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
               style={{ zIndex: 10 - i, position: i === 0 ? "relative" : "absolute", bottom: 0 }}
               className={cn(
                 "pointer-events-auto flex w-full max-w-sm items-start gap-3 rounded-2xl border bg-surface p-4 shadow-lift",
-                t.tone === "error" ? "border-risk/40" : "border-line/20"
+                t.tone === "error" ? "border-risk/40" : "border-line/35"
               )}
               role="status"
             >

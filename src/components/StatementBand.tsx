@@ -12,7 +12,7 @@ import { PROBLEM, WHY_NOW } from '@/content';
  * their sources, why today's fixes fall short, and why now.
  */
 export const StatementBand: React.FC = () => (
-  <section id="problem" className="relative isolate w-full scroll-mt-24 overflow-x-clip px-fluid py-20 lg:py-28" aria-labelledby="problem-heading">
+  <section id="problem" className="dark relative isolate w-full scroll-mt-24 overflow-x-clip border-y-2 border-ink px-fluid py-20 lg:py-28" aria-labelledby="problem-heading">
     <Aurora tone="risk" />
     <div className="mx-auto max-w-[1400px]">
       <Reveal y={12} className="flex justify-center">
@@ -23,7 +23,7 @@ export const StatementBand: React.FC = () => (
       </h2>
       <ScrollWordReveal
         text={PROBLEM.statement}
-        className="mx-auto mt-8 max-w-[18ch] justify-center text-center font-display text-[clamp(36px,5.6vw,96px)] font-semibold leading-[1.02] tracking-[-0.045em] text-fg"
+        className="mx-auto mt-8 max-w-[18ch] justify-center text-center font-display text-[clamp(36px,5.6vw,96px)] font-semibold leading-[1.02] tracking-[-0.035em] text-fg"
         dimOpacity={0.12}
       />
       <Reveal delay={0.1}>
@@ -35,7 +35,7 @@ export const StatementBand: React.FC = () => (
         {PROBLEM.stats.map((s, i) => (
           <Reveal key={s.label} delay={i * 0.08} className="h-full">
             <SpotlightCard className={`h-full p-6 sm:p-8 ${i === 0 ? 'border-risk/30' : ''}`}>
-              <p className="whitespace-nowrap font-display text-[clamp(34px,3vw,52px)] font-semibold leading-none tracking-[-0.05em] text-fg">
+              <p className="whitespace-nowrap font-display text-[clamp(34px,3vw,52px)] font-semibold leading-none tracking-[-0.035em] text-fg">
                 <Counter
                   to={s.value}
                   prefix={'prefix' in s ? s.prefix : ''}
@@ -55,7 +55,7 @@ export const StatementBand: React.FC = () => (
       <Reveal className="mt-4">
         <div className="relative flex flex-col gap-4 overflow-hidden rounded-card bg-night px-6 py-7 text-white sm:flex-row sm:items-center sm:gap-10 sm:px-10">
           <div aria-hidden="true" className="absolute -left-10 top-1/2 h-40 w-72 -translate-y-1/2 rounded-full bg-rose-500/25 blur-3xl" />
-          <p className="relative shrink-0 font-display text-[clamp(30px,3.4vw,52px)] font-bold tracking-[-0.04em] text-rose-400">
+          <p className="relative shrink-0 font-display text-[clamp(30px,3.4vw,52px)] font-bold tracking-[-0.03em] text-rose-400">
             {PROBLEM.band.left}
           </p>
           <p className="relative font-mono text-sm uppercase leading-relaxed tracking-[0.1em] text-white/80 sm:text-base">
@@ -66,12 +66,12 @@ export const StatementBand: React.FC = () => (
 
       {/* Why today's fixes fall short */}
       <Reveal className="mt-16">
-        <div className="overflow-hidden rounded-card border border-line/15 bg-surface/70">
-          <div className="hidden grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] border-b border-line/15 px-8 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-brand sm:grid">
+        <div className="overflow-hidden rounded-card border border-line/30 bg-surface/70">
+          <div className="hidden grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] border-b border-line/30 px-8 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-brand sm:grid">
             <span>How it's solved today</span>
             <span>Why that falls short</span>
           </div>
-          <ul className="divide-y divide-line/10">
+          <ul className="divide-y divide-line/20">
             {PROBLEM.fallsShort.map((row) => (
               <li
                 key={row.today}

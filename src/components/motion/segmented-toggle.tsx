@@ -47,7 +47,7 @@ export function SegmentedToggle<T extends string>({
       aria-label={label}
       style={{ gridTemplateColumns: `repeat(${mobileColumns}, minmax(0, 1fr))` }}
       className={cn(
-        "liquid-glass grid w-full gap-1 rounded-2xl p-1",
+        "pop grid w-full gap-1 rounded-2xl p-1",
         "sm:inline-flex sm:w-auto sm:flex-nowrap sm:rounded-full",
         className
       )}
@@ -72,7 +72,7 @@ export function SegmentedToggle<T extends string>({
             {selected && (
               <motion.span
                 layoutId={`${id}-pill`}
-                className="absolute inset-0 rounded-xl bg-brand-solid sm:rounded-full shadow-[0_6px_20px_-6px_rgb(var(--brand-solid)/0.8)]"
+                className="absolute inset-0 rounded-xl bg-brand-solid sm:rounded-full shadow-none"
                 transition={reduce ? { duration: 0 } : { type: "spring", stiffness: 420, damping: 34 }}
               />
             )}

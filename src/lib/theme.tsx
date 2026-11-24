@@ -13,7 +13,7 @@ function applyTheme(theme: Theme) {
   document.documentElement.classList.toggle("dark", theme === "dark");
   // Mobile browsers tint their toolbar with theme-color; follow the chosen theme.
   document.querySelectorAll('meta[name="theme-color"]').forEach((m) => {
-    m.setAttribute("content", theme === "dark" ? "#050614" : "#FDFAE7");
+    m.setAttribute("content", theme === "dark" ? "#0A0B16" : "#F4F1E8");
   });
 }
 

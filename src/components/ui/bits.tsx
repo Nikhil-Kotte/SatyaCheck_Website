@@ -8,21 +8,15 @@ import { useTheme } from "@/lib/theme-context";
 export function LogoMark({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 32 32" className={cn("h-8 w-8", className)} aria-hidden="true">
-      <defs>
-        <linearGradient id="sc-logo" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="rgb(var(--brand-hi))" />
-          <stop offset="1" stopColor="rgb(var(--brand-solid))" />
-        </linearGradient>
-      </defs>
-      <rect width="32" height="32" rx="9" fill="url(#sc-logo)" />
+      <rect x="1" y="1" width="30" height="30" rx="8" fill="rgb(var(--brand-solid))" stroke="rgb(var(--edge))" strokeWidth="2" />
       <path
         d="M6.5 16v0M9.5 12.5v7M12.5 14.5v3"
-        stroke="#fff"
+        stroke="rgb(var(--on-brand))"
         strokeWidth="2.2"
         strokeLinecap="round"
         opacity="0.75"
       />
-      <path d="M15 16.5l3.2 3.3L25.5 11" fill="none" stroke="#fff" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M15 16.5l3.2 3.3L25.5 11" fill="none" stroke="rgb(var(--on-brand))" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -31,7 +25,7 @@ export function Logo({ className }: { className?: string }) {
   return (
     <span className={cn("inline-flex items-center gap-2.5", className)}>
       <LogoMark />
-      <span className="font-display text-[19px] font-bold tracking-[-0.04em] text-fg">
+      <span className="font-display text-[20px] font-extrabold tracking-[-0.04em] text-fg">
         Satya<span className="text-brand">Check</span>
       </span>
     </span>
@@ -53,7 +47,7 @@ export function ThemeToggle({ className }: { className?: string }) {
       aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
       title={dark ? "Light mode" : "Dark mode"}
       className={cn(
-        "relative grid h-10 w-10 place-items-center overflow-hidden rounded-full border border-line/20 bg-surface/60 text-fg transition-colors hover:border-brand/50 hover:text-brand",
+        "relative grid h-10 w-10 place-items-center overflow-hidden rounded-xl border-2 border-edge bg-surface text-fg transition-colors hover:bg-accent hover:text-on-accent",
         className
       )}
     >
@@ -141,7 +135,7 @@ export function ScrollProgress() {
   return (
     <motion.div
       aria-hidden="true"
-      className="fixed inset-x-0 top-0 z-[60] h-[2px] origin-left bg-gradient-to-r from-brand-solid via-brand-hi to-brand"
+      className="fixed inset-x-0 top-0 z-[60] h-1 origin-left bg-accent"
       style={{ scaleX }}
     />
   );

@@ -178,7 +178,7 @@ export const UnderTheHood: React.FC = () => {
 
       {/* Evidence band */}
       <Reveal className="mt-8">
-        <div className="relative overflow-hidden rounded-panel border border-line/15 bg-surface/70 p-8 sm:p-12">
+        <div className="relative overflow-hidden rounded-panel border border-line/30 bg-surface/70 p-8 sm:p-12">
           <div aria-hidden="true" className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-brand/10 blur-3xl" />
           <div className="relative flex flex-col gap-6 sm:flex-row sm:items-start">
             <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-brand-solid text-on-brand shadow-glow">
